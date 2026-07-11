@@ -7,8 +7,13 @@
 
     <style>
        body {
-    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-}
+            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+
+            /* Arkansas River Valley Gradient */
+            background: linear-gradient(to bottom, #a8d0e6, #6fb1c8, #3f7f8c);
+            color: #fff;
+        }
+        
         header, main, section {
             margin-bottom: 30px;
         }
@@ -30,6 +35,21 @@
         li {
             margin-bottom: 8px;
         }
+
+        /* Home button styling */
+        .home-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: rgba(0,0,0,0.4);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .home-button:hover {
+            background-color: rgba(0,0,0,0.6);
+        }
     </style>
 </head>
 
@@ -42,7 +62,7 @@
 <main>
 
 <a href="index.html" class="home-button">← Back to Home</a>
-	
+    
 <section>
     <p>
         I am a data journalist dedicated to transforming complex datasets into clear, meaningful stories 
@@ -66,7 +86,8 @@
     <h2>How I Work</h2>
     <p>
         I follow established data journalism research: gathering data through public records, scraping, 
-    open data portals, and FOIA requests.</p>
+        open data portals, and FOIA requests.
+    </p>
 </section>
 
 <section>
@@ -78,6 +99,7 @@
         <li><strong>Accessibility:</strong> I present data visually and narratively so all readers can understand it.</li>
     </ul>
 </section>
+
 <section>
     <h2>Contact</h2>
     <p>

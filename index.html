@@ -17,32 +17,36 @@
             color: #111;
         }
 
+        /* HEADER */
         .site-header {
             background: rgba(0, 0, 0, 0.65);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .logo p {
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.85;
         }
 
+        /* NAVIGATION */
         .main-nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .main-nav a {
@@ -51,25 +55,40 @@
             font-weight: 600;
             padding: 6px 10px;
             border-radius: 5px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .main-nav a:hover {
             background-color: rgba(255, 255, 255, 0.25);
         }
 
+        /* ARTICLE CONTAINER */
         .article-container {
             max-width: 900px;
-            margin: 3rem auto;
+            width: 90%;
+            margin: 2rem auto;
             background: rgba(255, 255, 255, 0.92);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
         }
 
         .article-container h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-top: 0;
         }
 
+        /* RESPONSIVE SQUARE IMAGE */
+        .feature-image {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1; /* perfect square */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px auto;
+            border-radius: 10px;
+        }
+
+        /* FOOTER */
         .site-footer {
             text-align: center;
             padding: 1rem;
@@ -77,6 +96,21 @@
             color: #fff;
             background: rgba(0, 0, 0, 0.65);
             margin-top: 3rem;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 600px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .article-container {
+                padding: 1rem;
+            }
+
+            .article-container h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -103,11 +137,9 @@
 
         <h2>La Junta Native Set to Release Psychological Horror Video Game</h2>
 
-       <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey"
-     alt="Gregory Montoya Feature Photo"
-     style="width:400px; height:400px; object-fit:cover; display:block; margin:0 auto 15px auto; border-radius:10px;">
-
-
+        <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey"
+             alt="Gregory Montoya Feature Photo"
+             class="feature-image">
 
         <p><strong>Photo Credit: Gregory Montoya</strong></p>
 
@@ -187,7 +219,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Feature Story Showcase. All rights reserved.</p>
+        <p>&copy; 2026 Ark News. All rights reserved.</p>
     </footer>
 
 </body>

@@ -6,37 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-       body {
+        body {
             font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-
-            /* Arkansas River Valley Gradient */
             background: linear-gradient(to bottom, #a8d0e6, #6fb1c8, #3f7f8c);
             color: #fff;
+            margin: 0;
+            padding: 20px;
         }
-        
-        header, main, section {
-            margin-bottom: 30px;
+
+        /* Page container */
+        .about-container {
+            max-width: 900px;
+            width: 90%;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 2.4em;
-            margin-bottom: 10px;
+            font-size: 2rem;
+            margin: 0;
         }
 
         h2 {
             margin-top: 25px;
-            font-size: 1.6em;
+            font-size: 1.5rem;
+        }
+
+        p, li {
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
         ul {
             margin-top: 10px;
+            padding-left: 20px;
         }
 
         li {
             margin-bottom: 8px;
         }
 
-        /* Home button styling */
+        /* Home button */
         .home-button {
             display: inline-block;
             padding: 10px 15px;
@@ -44,71 +61,90 @@
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         .home-button:hover {
             background-color: rgba(0,0,0,0.6);
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            p, li {
+                font-size: 0.95rem;
+            }
+
+            .about-container {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>About Me</h1>
-</header>
-
-<main>
-
 <a href="index.html" class="home-button">← Back to Home</a>
-    
-<section>
-    <p>
-        I am a data journalist dedicated to transforming complex datasets into clear, meaningful stories 
-        that help the public understand issues shaping their communities. My work combines statistical 
-        analysis, investigative reporting, and transparent methodology principles emphasized in 
-        leading data journalism research and practice.
-    </p>
-</section>
 
-<section>
-    <h2>My Mission</h2>
-    <p>
-        My mission is to use data responsibly and critically, recognizing that datasets are never neutral. 
-        I aim to reveal patterns, inequities, and insights that traditional reporting may overlook. 
-        I follow evidence based practices and prioritize clarity, accuracy, and public accountability 
-        in every story I produce.
-    </p>
-</section>
+<div class="about-container">
 
-<section>
-    <h2>How I Work</h2>
-    <p>
-        I follow established data journalism research: gathering data through public records, scraping, 
-        open data portals, and FOIA requests.
-    </p>
-</section>
+    <header>
+        <h1>About Me</h1>
+    </header>
 
-<section>
-    <h2>My Values</h2>
-    <ul>
-        <li><strong>Transparency:</strong> I publish methodologies, sources, and limitations for every dataset.</li>
-        <li><strong>Accuracy:</strong> I verify data quality, check for bias, and validate findings with experts.</li>
-        <li><strong>Ethics:</strong> I consider the social impact of data stories and avoid misrepresenting statistics.</li>
-        <li><strong>Accessibility:</strong> I present data visually and narratively so all readers can understand it.</li>
-    </ul>
-</section>
+    <section>
+        <p>
+            I am a data journalist dedicated to transforming complex datasets into clear, meaningful stories 
+            that help the public understand issues shaping their communities. My work combines statistical 
+            analysis, investigative reporting, and transparent methodology principles emphasized in 
+            leading data journalism research and practice.
+        </p>
+    </section>
 
-<section>
-    <h2>Contact</h2>
-    <p>
-        I welcome questions, feedback, and data tips. Journalism is a collaborative process, and I encourage 
-        readers, researchers, and community members to reach out.
-    </p>
-</section>
+    <section>
+        <h2>My Mission</h2>
+        <p>
+            My mission is to use data responsibly and critically, recognizing that datasets are never neutral. 
+            I aim to reveal patterns, inequities, and insights that traditional reporting may overlook. 
+            I follow evidence‑based practices and prioritize clarity, accuracy, and public accountability 
+            in every story I produce.
+        </p>
+    </section>
 
-</main>
+    <section>
+        <h2>How I Work</h2>
+        <p>
+            I follow established data journalism research: gathering data through public records, scraping, 
+            open data portals, and FOIA requests.
+        </p>
+    </section>
+
+    <section>
+        <h2>My Values</h2>
+        <ul>
+            <li><strong>Transparency:</strong> I publish methodologies, sources, and limitations for every dataset.</li>
+            <li><strong>Accuracy:</strong> I verify data quality, check for bias, and validate findings with experts.</li>
+            <li><strong>Ethics:</strong> I consider the social impact of data stories and avoid misrepresenting statistics.</li>
+            <li><strong>Accessibility:</strong> I present data visually and narratively so all readers can understand it.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>
+            I welcome questions, feedback, and data tips. Journalism is a collaborative process, and I encourage 
+            readers, researchers, and community members to reach out.
+        </p>
+    </section>
+
+</div>
 
 </body>
 </html>

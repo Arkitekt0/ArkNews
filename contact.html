@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact ArkNews</title>
+
     <style>
         body {
             font-family: Cambria, serif;
@@ -13,7 +14,7 @@
             padding: 20px;
         }
 
-        /* Home button styling */
+        /* Home button */
         .home-button {
             display: inline-block;
             padding: 10px 15px;
@@ -29,8 +30,10 @@
             background-color: rgba(0,0,0,0.6);
         }
 
+        /* Contact container */
         .contact-container {
             max-width: 800px;
+            width: 90%;
             margin: auto;
             background: #1a1a1a;
             padding: 20px;
@@ -41,15 +44,18 @@
             margin-top: 0;
             color: #f0f0f0;
             font-family: Cambria, serif;
+            font-size: 1.8rem;
         }
 
         p, li {
             font-family: Cambria, serif;
             line-height: 1.6;
+            font-size: 1rem;
         }
 
         .contact-info {
             margin-top: 20px;
+            padding-left: 20px;
         }
 
         .contact-info li {
@@ -58,6 +64,7 @@
 
         a {
             color: #4da3ff;
+            word-break: break-word;
         }
 
         .mobile-warning {
@@ -67,8 +74,24 @@
             line-height: 1.4;
             font-family: Cambria, serif;
         }
+
+        /* Mobile optimization */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p, li {
+                font-size: 0.95rem;
+            }
+
+            .contact-container {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
 <!-- Back to Home Button -->
@@ -82,8 +105,16 @@
         <li><strong>Email:</strong> arkitektcreations@gmail.com</li>
         <li><strong>Phone:</strong> 719-468-0242</li>
         <li><strong>Location:</strong> La Junta, Colorado 81050</li>
-        <li><strong>Portfolio:</strong> <a href="https://rjhernandez1.myportfolio.com/" target="_blank">https://rjhernandez1.myportfolio.com/</a></li>
-        <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ronald-hernandez2209-673349117/" target="_blank">Ronald Hernandez Jr. on LinkedIn</a></li>
+        <li><strong>Portfolio:</strong> 
+            <a href="https://rjhernandez1.myportfolio.com/" target="_blank">
+                https://rjhernandez1.myportfolio.com/
+            </a>
+        </li>
+        <li><strong>LinkedIn:</strong> 
+            <a href="https://www.linkedin.com/in/ronald-hernandez2209-673349117/" target="_blank">
+                Ronald Hernandez Jr. on LinkedIn
+            </a>
+        </li>
     </ul>
 
     <p class="mobile-warning">

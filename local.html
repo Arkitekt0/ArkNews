@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Local News | La Junta Daily News</title>
+    <title>Local News | Ark News</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
         body {
             margin: 0;
             font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-            background-image: url(https://www.dropbox.com/scl/fi/0bbk56ncgi68bnuyzg5mw/Welcome-to-Colorado.jpeg?rlkey=j21c94rwwp6pyt6tfibzeagsq&raw=1);
+            background-image: url("https://www.dropbox.com/scl/fi/0bbk56ncgi68bnuyzg5mw/Welcome-to-Colorado.jpeg?rlkey=j21c94rwwp6pyt6tfibzeagsq&raw=1");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -17,14 +17,15 @@
             color: #111;
         }
 
+        /* HEADER */
         .site-header {
             background: rgba(0, 0, 0, 0.65);
             color: #fff;
-            padding: 1rem 2rem;
+            padding: 1rem;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            font-family: Cambria, serif;
         }
 
         .logo h1 {
@@ -35,39 +36,45 @@
         .logo p {
             margin: 0;
             font-size: 0.9rem;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
+        /* NAVIGATION */
         .main-nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .main-nav a {
             color: #fff;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .main-nav a:hover {
-            text-decoration: underline;
+            background-color: rgba(255, 255, 255, 0.25);
         }
 
+        /* ARTICLE CONTAINER */
         .article-container {
             max-width: 900px;
+            width: 90%;
             margin: 2rem auto;
             background: rgba(255, 255, 255, 0.92);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 10px;
-            font-family: Cambria, serif;
         }
 
         .headline-article h2 {
             margin-top: 0;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
 
         .headline-meta {
@@ -76,9 +83,24 @@
             margin-bottom: 1rem;
         }
 
+        /* RESPONSIVE VIDEO */
         .video-container {
             margin: 2rem 0;
             text-align: center;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .video-container iframe {
+                height: 220px;
+            }
         }
 
         .video-credit {
@@ -87,6 +109,7 @@
             margin-top: 5px;
         }
 
+        /* HOME BUTTON */
         .home-button {
             display: inline-block;
             padding: 10px 15px;
@@ -96,28 +119,40 @@
             border-radius: 5px;
             margin: 15px 0;
             font-weight: 600;
-            font-family: Cambria, serif;
         }
 
         .home-button:hover {
             background-color: #1d4ed8;
         }
 
+        /* FOOTER */
         .site-footer {
             text-align: center;
             padding: 1rem;
             font-size: 0.85rem;
             color: #fff;
             background: rgba(0, 0, 0, 0.65);
-            font-family: Cambria, serif;
+            margin-top: 3rem;
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 600px) {
+            .headline-article h2 {
+                font-size: 1.5rem;
+            }
+
+            .article-container {
+                padding: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
+
     <header class="site-header">
         <div class="logo">
-            <h1>La Junta Daily News</h1>
+            <h1>Ark News</h1>
             <p>Independent Local Journalism</p>
         </div>
 
@@ -152,11 +187,8 @@
 
             <div class="video-container">
                 <iframe 
-                    width="800" 
-                    height="450" 
                     src="https://www.youtube.com/embed/96CmuOdF-zs"
                     title="USA 250th Anniversary Wet Parade"
-                    frameborder="0"
                     allowfullscreen>
                 </iframe>
 
@@ -242,5 +274,6 @@
     <footer class="site-footer">
         <p>&copy; 2026 Ark News. All rights reserved.</p>
     </footer>
+
 </body>
 </html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credible News Sources</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #111827;
+            --accent: #3b82f6;
+            --accent-soft: #1d4ed8;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --border: #1f2937;
+        }
+
+        body {
+            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+            background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000000 100%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: auto;
+            background: linear-gradient(135deg, rgba(15,23,42,0.96), rgba(17,24,39,0.98));
+            border-radius: 18px;
+            border: 1px solid rgba(148,163,184,0.25);
+            padding: 2.5rem;
+        }
+
+        /* Home Button */
+        .home-btn {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.15s ease;
+        }
+        .home-btn:hover {
+            background: var(--accent-soft);
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .source-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+
+        .source-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .source-type {
+            font-size: 0.8rem;
+            color: #93c5fd;
+            margin-bottom: 0.5rem;
+        }
+
+        .source-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .source-link {
+            display: inline-block;
+            padding: 0.45rem 0.85rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .source-link:hover {
+            background: var(--accent-soft);
+        }
+
+        /* Ethics Section */
+        .ethics {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: #1a2335;
+            border-radius: 12px;
+            border: 1px solid #2b354b;
+        }
+
+        .ethics h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+
+        .ethics ul {
+            margin: 1rem 0 0 1.2rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        footer {
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- Return Home Button -->
+    <a href="index.html" class="home-btn">← Return to Home</a>
+
+    <header>
+        <h1>Credible, Professional News Sources</h1>
+        <p class="subtitle">
+            A curated list of reputable news organizations.
+        </p>
+    </header>
+
+    <section class="grid">
+
+        <!-- Associated Press -->
+        <div class="source-card">
+            <div class="source-name">AP News (Associated Press)</div>
+            <div class="source-type">Wire Service · Global</div>
+            <p class="source-desc">Nonprofit news cooperative known for straight‑fact reporting used worldwide.</p>
+            <a class="source-link" href="https://apnews.com" target="_blank">Visit AP News</a>
+        </div>
+
+        <!-- Reuters -->
+        <div class="source-card">
+            <div class="source-name">Reuters</div>
+            <div class="source-type">Wire Service · Global</div>
+            <p class="source-desc">International news agency known for neutral, data‑driven coverage.</p>
+            <a class="source-link" href="https://www.reuters.com" target="_blank">Visit Reuters</a>
+        </div>
+
+        <!-- BBC -->
+        <div class="source-card">
+            <div class="source-name">BBC News</div>
+            <div class="source-type">Public Broadcaster · UK</div>
+            <p class="source-desc">Publicly funded global news outlet with strong editorial standards.</p>
+            <a class="source-link" href="https://www.bbc.com/news" target="_blank">Visit BBC News</a>
+        </div>
+
+        <!-- NPR -->
+        <div class="source-card">
+            <div class="source-name">NPR</div>
+            <div class="source-type">Public Media · U.S.</div>
+            <p class="source-desc">Nonprofit U.S. media offering in‑depth reporting and explanatory journalism.</p>
+            <a class="source-link" href="https://www.npr.org" target="_blank">Visit NPR</a>
+        </div>
+
+        <!-- ProPublica -->
+        <div class="source-card">
+            <div class="source-name">ProPublica</div>
+            <div class="source-type">Investigative · Nonprofit</div>
+            <p class="source-desc">Independent newsroom focused on public‑interest investigative reporting.</p>
+            <a class="source-link" href="https://www.propublica.org" target="_blank">Visit ProPublica</a>
+        </div>
+
+        <!-- Al Jazeera -->
+        <div class="source-card">
+            <div class="source-name">Al Jazeera English</div>
+            <div class="source-type">International Broadcaster</div>
+            <p class="source-desc">Global network covering under‑reported regions and world events.</p>
+            <a class="source-link" href="https://www.aljazeera.com" target="_blank">Visit Al Jazeera</a>
+        </div>
+
+        <!-- The Guardian -->
+        <div class="source-card">
+            <div class="source-name">The Guardian</div>
+            <div class="source-type">Independent · UK</div>
+            <p class="source-desc">Trust‑funded outlet offering free access to most reporting.</p>
+            <a class="source-link" href="https://www.theguardian.com" target="_blank">Visit The Guardian</a>
+        </div>
+
+        <!-- Colorado Public Radio -->
+        <div class="source-card">
+            <div class="source-name">Colorado Public Radio</div>
+            <div class="source-type">Regional Public Media</div>
+            <p class="source-desc">Credible regional reporting for Colorado communities and policy.</p>
+            <a class="source-link" href="https://www.cpr.org/news/" target="_blank">Visit CPR News</a>
+        </div>
+
+    </section>
+
+    <!-- Ethics Section -->
+    <section class="ethics">
+        <h2>Journalism Ethics &amp; Professional Standards</h2>
+        <ul>
+            <li><strong>Accuracy:</strong> Verify information before publishing. Cross‑check facts with multiple credible sources.</li>
+            <li><strong>Independence:</strong> Avoid conflicts of interest and maintain editorial separation from sponsors or political groups.</li>
+            <li><strong>Accountability:</strong> Correct mistakes promptly and transparently.</li>
+            <li><strong>Fairness:</strong> Represent subjects honestly without distortion or selective omission.</li>
+            <li><strong>Transparency:</strong> Disclose methods, sourcing limitations, and potential biases when relevant.</li>
+            <li><strong>Minimize Harm:</strong> Consider the impact of reporting on vulnerable individuals and communities.</li>
+            <li><strong>No Plagiarism:</strong> Attribute all quotes, data, and reporting to their original sources.</li>
+        </ul>
+    </section>
+
+    <footer>
+        This page links to external sites. Review each outlet’s terms before republishing content.  
+        <br>Maintainer: Ronald Hernandez Jr. · Updated 2026
+    </footer>
+
+</div>
+
+</body>
+</html>

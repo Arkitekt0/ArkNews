@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Featured People | Ark News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Featured People — curated profiles and feature stories from Ark News." />
+
+  <style>
+    :root{
+      --panel-bg: rgba(255,255,255,0.94);
+      --header-bg: rgba(0,0,0,0.65);
+      --muted: #666;
+      --accent: #0b6;
+      --max-width: 1100px;
+      --radius: 10px;
+      --gap: 1rem;
+      --card-min: 260px;
+    }
+
+    /* Base */
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+      background-image: url("https://www.dropbox.com/scl/fi/a2vcwbz0fn5fyyuvguxs7/RockyMountains.jpeg?rlkey=z13dghmbncutxiuyx14ctzf8j&raw=1");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color:#111;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Header */
+    .site-header{
+      background:var(--header-bg);
+      color:#fff;
+      padding:1rem;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      align-items:center;
+      gap:.75rem;
+    }
+    .logo h1{margin:0;font-size:1.6rem;}
+    .logo p{margin:0;font-size:.9rem;opacity:.9;}
+    .main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;}
+    .main-nav a{
+      color:#fff;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:6px;
+      background:rgba(255,255,255,0.12);
+    }
+    .main-nav a:focus, .main-nav a:hover{background:rgba(255,255,255,0.22);outline:none;}
+
+    /* Page container */
+    .page {
+      max-width:var(--max-width);
+      margin:2rem auto;
+      width:90%;
+      background: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+      border-radius:var(--radius);
+      padding:1.25rem;
+      box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* Intro */
+    .intro{
+      margin-bottom:1rem;
+    }
+    .intro h2{margin:.25rem 0 0;font-size:1.4rem;}
+    .intro p{margin:.25rem 0;color:var(--muted);}
+
+    /* Stories grid */
+    .stories{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
+      gap:var(--gap);
+      align-items:start;
+    }
+
+    /* Story card */
+    .story-card{
+      background:var(--panel-bg);
+      border-radius:8px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:220px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.12);
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .story-card:focus-within,
+    .story-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .story-media{
+      width:100%;
+      height:0;
+      padding-bottom:56.25%; /* 16:9 ratio */
+      position:relative;
+      background:#ddd;
+    }
+    .story-media img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      display:block;
+    }
+
+    .story-body{
+      padding:0.9rem 1rem;
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      flex:1 1 auto;
+    }
+    .story-title{
+      margin:0;font-size:1.05rem;
+      line-height:1.25;
+    }
+    .story-meta{
+      font-size:.85rem;color:var(--muted);
+      display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
+    }
+    .story-excerpt{
+      margin-top:.4rem;color:#222;flex:1 1 auto;
+    }
+
+    .story-actions{
+      display:flex;gap:.5rem;align-items:center;margin-top:.6rem;
+    }
+    .btn{
+      display:inline-block;padding:.45rem .6rem;border-radius:6px;text-decoration:none;font-weight:600;
+      background:rgba(0,0,0,0.06);color:#111;border:1px solid rgba(0,0,0,0.06);
+      cursor:pointer;
+    }
+    .btn:focus, .btn:hover{background:rgba(0,0,0,0.12);outline:none;}
+
+    /* Details-based inline article */
+    details.story-full{
+      border-top:1px solid rgba(0,0,0,0.06);
+      margin-top:.75rem;
+      padding-top:.75rem;
+      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
+      border-radius:6px;
+    }
+    details.story-full summary{
+      list-style:none;
+      display:inline-block;
+      margin:0;
+      padding:0;
+      cursor:pointer;
+    }
+    details.story-full summary::-webkit-details-marker{display:none;}
+    .full-article{
+      margin-top:.6rem;
+      color:#222;
+    }
+    .full-article p{margin:.6rem 0;}
+    .full-article .feature-image{
+      max-width:420px;
+      margin:0 0 .6rem 0;
+      display:block;
+    }
+    .full-article .video-container iframe{width:100%;height:320px;border:0;border-radius:8px;}
+
+    /* Footer */
+    .site-footer{
+      text-align:center;padding:1rem;font-size:.85rem;color:#fff;background:var(--header-bg);margin-top:1.25rem;border-radius:0 0 var(--radius) var(--radius);
+    }
+
+    /* Accessibility helpers */
+    .sr-only{
+      position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width:900px){
+      .video-container iframe{height:240px;}
+    }
+    @media (max-width:600px){
+      .logo h1{font-size:1.25rem;}
+      .story-title{font-size:1rem;}
+      .video-container iframe{height:200px;}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="logo" aria-hidden="false">
+      <h1>Feature Story</h1>
+      <p>Independent Creative Spotlight</p>
+    </div>
+
+    <nav class="main-nav" role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#stories">Local</a></li>
+        <li><a href="sources.html">Sources</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page" id="top" role="main">
+    <section class="intro" aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured People</h2>
+      <p>Profiles, interviews, and community spotlights. Click a card's Read button to expand the story inline.</p>
+    </section>
+
+    <!-- Stories grid: only the two requested articles remain -->
+    <section class="stories" id="stories" aria-label="Featured stories list">
+      <!-- Story card 1: Mayor Joe Ayala -->
+      <article class="story-card" aria-labelledby="s1-title">
+        <div class="story-media" role="img" aria-label="Portrait of Mayor Joe Ayala">
+          <img src="https://dl.dropboxusercontent.com/scl/fi/229o4dphvv65c4wl91uki/MayorJoeAyala.jpg?rlkey=273aclig5mjpgw91f797gl3oi&raw=1"
+               alt="Mayor Joe Ayala smiling at a community event">
+        </div>
+
+        <div class="story-body">
+          <h4 id="s1-title" class="story-title">Mayor Joe Ayala: Community, Childhood, and the Road Ahead</h4>
+          <div class="story-meta"><span>La Junta, CO</span><span>·</span><time datetime="2026-08-01">Aug 1, 2026</time></div>
+          <p class="story-excerpt">Ayala discusses local journalism, youth programs, and the role of municipal leadership in small towns.</p>
+
+          <!-- Inline expandable article using details/summary -->
+          <details class="story-full" aria-labelledby="s1-title">
+            <summary class="btn" aria-controls="ayala-full">Read</summary>
+            <div id="ayala-full" class="full-article">
+              <img src="https://dl.dropboxusercontent.com/scl/fi/229o4dphvv65c4wl91uki/MayorJoeAyala.jpg?rlkey=273aclig5mjpgw91f797gl3oi&raw=1"
+                   alt="Mayor Joe Ayala Feature Photo"
+                   class="feature-image">
+              <p><strong>Photo Credit: Joe Ayala</strong></p>
+
+              <p><strong>La Junta, Colorado</strong> — Mayor Joe Ayala, a lifelong resident of the Arkansas Valley, offered a candid look at his upbringing, motivations, and hopes for the community in a recent interview that underscored both the strengths and challenges of small-town life.</p>
+
+              <p>Ayala grew up in La Junta during the 1990s, a period he remembers for simplicity, familial bond, and early exposure to technology. He recalled classrooms with computers running games like <em>Oregon Trail</em> and <em>Number Munchers</em>, alongside afternoons spent playing baseball, football, and other recreational sports. Though an only child, Ayala said his vast extended family made his childhood feel full and connected.</p>
+
+              <p>“My grandpa had nine kids, so I was always around a cousin,” he reminisces.</p>
+
+              <p>Becoming mayor was never a childhood ambition. His decision emerged from concerns about the city’s financial direction and the long-term opportunities available to local youth. Rising expenses, reliance on reserves, and unsustainable spending patterns signaled the need for a course correction.</p>
+
+              <p>“The biggest reason I wanted to become mayor was for my kids,” he says, “for all the kids,” noting that he wanted future generations to have the option to return home.</p>
+
+              <p>Ayala also discussed how travel teams, while beneficial for some families, reduce participation in local recreation leagues. He said this shift affects access for children who cannot afford travel-team costs and strains community programs that rely on broad participation.</p>
+
+              <p>Beyond athletics, Ayala expressed concern about declining engagement in arts and academic activities. He commented on the recent recast in production at the local children’s theater due to low turnout and said many school achievements outside sports receive limited recognition. He recalled earlier eras when newspapers regularly highlighted student artwork, music programs, and community accomplishments.</p>
+
+              <p>“We used to put the elementary school paintings in the newspaper,” he reflects.</p>
+
+              <p>Ayala said local journalism plays a crucial role in restoring balance by emphasizing achievements beyond athletics. He voiced concern that the rise of AI-generated content has shifted focus toward sensationalism rather than community-centered reporting, observing that meaningful coverage requires presence, context, and connection.</p>
+
+              <p>He described the realities of municipal governance, noting that the mayor is one vote among seven council members and does not act unilaterally. Public perception often overestimates the mayor’s authority, but the role is primarily one of leadership, communication, and support for the city manager.</p>
+
+              <p>Ayala highlighted expanded public access to city meetings, all of which are now streamed for residents, including council, utility board, tourism, library, and urban renewal sessions.</p>
+
+              <p>When offering guidance for local youth, Ayala encouraged them to pursue meaningful goals, remain solution‑oriented, and use technology constructively. He said social media often presents only highlight reels, making it important for young people to stay grounded and surround themselves with positive influences.</p>
+
+              <p>“Find something that sets your soul on fire,” he said.</p>
+
+              <p>Ayala also urged young people to prepare themselves for future challenges by building skills and habits early. He compared personal growth to constructing an ark before the storm arrives, emphasizing the importance of long-term preparation.</p>
+
+              <p>He closed the interview by expressing his appreciation for the conversation and reaffirming his commitment to supporting La Junta’s continued growth and stability.</p>
+
+              <p><a class="btn" href="#top">Back to top</a></p>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Story card 2: Gregory Montoya -->
+      <article class="story-card" aria-labelledby="s3-title">
+        <div class="story-media" role="img" aria-label="Portrait of Gregory Montoya">
+          <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey&raw=1"
+               alt="Gregory Montoya working on a game design">
+        </div>
+
+        <div class="story-body">
+          <h4 id="s3-title" class="story-title">La Junta Native Set to Release Psychological Horror Video Game</h4>
+          <div class="story-meta"><span>La Junta, CO</span><span>·</span><time datetime="2026-07-01">Jul 1, 2026</time></div>
+          <p class="story-excerpt">Gregory Montoya, a self-taught developer, prepares to release the first chapter of a psychological horror game inspired by folklore and classic survival horror.</p>
+
+          <details class="story-full" aria-labelledby="s3-title">
+            <summary class="btn" aria-controls="montoya-full">Read</summary>
+            <div id="montoya-full" class="full-article">
+              <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey&raw=1"
+                   alt="Gregory Montoya Feature Photo"
+                   class="feature-image">
+
+              <p><strong>Photo Credit: Gregory Montoya</strong></p>
+
+              <p>LA JUNTA, Colorado — Gregory Montoya, a game developer originally from the area, is preparing to release the first chapter of his newest psychological horror video game, marking a major milestone in a journey shaped by resilience, creativity, and years of self-taught programming.</p>
+
+              <p>Montoya’s childhood in La Junta was marked by instability. With a father battling alcoholism, he moved frequently and attended nine different schools before reaching adulthood. Those early challenges forced him to adapt quickly and pushed him toward creative outlets that offered structure and expression. Game development eventually became the place where imagination, discipline, and problem-solving converged.</p>
+
+              <p>“Writing code felt like learning a new language,” he said, “one the computer could understand.”</p>
+
+              <p>By age 16, Montoya had already taught himself HTML, CSS, and Python, laying the groundwork for a future in programming. In 2004, he began building his first game, discovering a passion for crafting interactive worlds that allowed players to explore the environments he envisioned.</p>
+
+              <p>Breaking into the indie game industry came with its own obstacles. Competing for visibility in a crowded field pushed Montoya to focus on consistency, originality, and memorable experiences.</p>
+
+              <p>Data analysis has also become central to his work. He studies gameplay behavior to balance mechanics, pacing, and event timing, ensuring players experience tension and unpredictability.</p>
+
+              <p>Set for its first-chapter release in early December 2026, the game blends psychological horror with player choice, drawing inspiration from Silent Hill, Resident Evil, Fatal Frame, folklore, and urban legends.</p>
+
+              <p>“Make the game you’ve always wanted to play,” Montoya said.</p>
+
+              <p>A catastrophic setback nearly derailed the project when a hard drive failure erased the entire game. “Losing everything proved how much it meant to me,” he said.</p>
+
+              <p>As the release approaches, Montoya continues to inspire through persistence, ingenuity, and a commitment to pushing creative boundaries.</p>
+
+              <p>The game is available on Steam at the link below:</p>
+
+              <p><a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank" rel="noopener">https://store.steampowered.com/app/4836860/Beguiled_Egress/</a></p>
+
+              <p><a class="btn" href="#top">Back to top</a></p>
+            </div>
+          </details>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2026 Ark News. All rights reserved.</p>
+  </footer>
+</body>
+</html>

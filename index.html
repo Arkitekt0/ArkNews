@@ -5,6 +5,9 @@
     <title>Colorado’s Historic Milestone: A Century and a Half in the Union</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Preload the hero image for faster display -->
+    <link rel="preload" as="image" href="https://www.dropbox.com/scl/fi/rdypmyhts0s6ezpnb3y1a/LJTD_FrontPage_1-1-1898_LOC.jpg?rlkey=our7rmagw3o0uke5c82xwqafm&raw=1">
+
     <style>
         body {
             margin: 0;
@@ -155,14 +158,19 @@
             By Ronald Hernandez Jr. | August 1, 2026 | Local News
         </div>
 
-        <!-- Featured Historical Newspaper Image -->
-        <img src="https://www.dropbox.com/scl/fi/rdypmyhts0s6ezpnb3y1a/LJTD_FrontPage_1-1-1898_LOC.jpg?rlkey=our7rmagw3o0uke5c82xwqafm&raw=1"
-             alt="Front page of the La Junta Tribune, January 1, 1898"
-             class="feature-image">
-
-        <div class="image-caption">
-            Image provided by: History Colorado
-        </div>
+        <!-- Featured Historical Newspaper Image (Hero Image) -->
+        <figure style="margin: 1.5rem 0; text-align: center;">
+            <img src="https://www.dropbox.com/scl/fi/rdypmyhts0s6ezpnb3y1a/LJTD_FrontPage_1-1-1898_LOC.jpg?rlkey=our7rmagw3o0uke5c82xwqafm&raw=1"
+                 alt="Front page of the La Junta Tribune, January 1, 1898"
+                 class="feature-image"
+                 width="400"
+                 height="500"
+                 loading="eager"
+                 fetchpriority="high">
+            <figcaption class="image-caption">
+                Image provided by: History Colorado
+            </figcaption>
+        </figure>
 
         <p>
             On this day in history, Colorado marks 150 years since its admission to the United States,

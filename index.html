@@ -75,13 +75,25 @@
             margin-top: 0;
         }
 
+        /* RESPONSIVE IMAGE STYLING */
         .feature-image {
             width: 100%;
             max-width: 400px;
             height: auto;
+            max-height: 500px;
+            object-fit: contain;
             display: block;
-            margin: 0 auto 15px auto;
+            margin: 0 auto 10px auto;
             border-radius: 10px;
+        }
+
+        /* IMAGE CAPTION */
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #444;
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
         .site-footer {
@@ -93,6 +105,7 @@
             margin-top: 3rem;
         }
 
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 600px) {
             .logo h1 {
                 font-size: 1.5rem;
@@ -104,6 +117,11 @@
 
             .article-container h2 {
                 font-size: 1.5rem;
+            }
+
+            .feature-image {
+                max-width: 100%;
+                max-height: 350px;
             }
         }
     </style>
@@ -129,7 +147,7 @@
 </header>
 
 <div class="article-container">
-  <article class="headline-article">
+    <article class="headline-article">
 
         <h2>Colorado’s Historic Milestone: A Century and a Half in the Union</h2>
 
@@ -137,10 +155,19 @@
             By Ronald Hernandez Jr. | August 1, 2026 | Local News
         </div>
 
+        <!-- Featured Historical Newspaper Image -->
+        <img src="https://www.dropbox.com/scl/fi/rdypmyhts0s6ezpnb3y1a/LJTD_FrontPage_1-1-1898_LOC.jpg?rlkey=our7rmagw3o0uke5c82xwqafm&raw=1"
+             alt="Front page of the La Junta Tribune, January 1, 1898"
+             class="feature-image">
+
+        <div class="image-caption">
+            Image provided by: History Colorado
+        </div>
+
         <p>
-            On this day in history, Colorado marks 150 years since its admittance to the United States,
+            On this day in history, Colorado marks 150 years since its admission to the United States,
             a milestone recorded on August 1, 1876, when President Ulysses S. Grant signed the proclamation
-            offiically approving Colorado as the 38th state in the Union, as documented by the
+            officially admitting Colorado as the 38th state in the Union, as documented by the
             <a href="https://www.loc.gov/item/today-in-history/august-01/" target="_blank">Library of Congress</a>.
         </p>
 
@@ -159,75 +186,104 @@
             and contributed to the territorial push toward organized governance.
         </p>
 
-    <h3>Original Coloradans</h3>
+        <h3>Original Coloradans</h3>
 
         <p>
             Research from the <a href="https://guides.loc.gov/colorado-local-history-genealogy" target="_blank">Library of Congress</a>
-            and documentary work by <a href="https://www.pbs.org/video/colorado-experience-original-coloradans/" target="_blank">PBS,</a>
+            and documentary work by <a href="https://www.pbs.org/video/colorado-experience-original-coloradans/" target="_blank">PBS</a>
             identify Colorado’s earliest known inhabitants as Indigenous nations including the Ute, Cheyenne,
-            Arapaho, and Apache peoples. These nations developed cultural traditions, trade networks,
+            Arapaho, and Apache peoples. These communities developed cultural traditions, trade networks,
             and seasonal migration patterns long before European or American settlement.
         </p>
-        <p>These groups were the region’s original Coloradans, forming
-            the foundation of Colorado’s earliest human history and transforming cultural and environmental
-            practices across the plains, mountains, and river valleys. </p>
+
+        <p>
+            PBS documentation highlights that these groups were the region’s original Coloradans, forming
+            the foundation of Colorado’s earliest human history and shaping cultural and environmental
+            practices across the plains, mountains, and river valleys.
+        </p>
 
         <h3>Early American Settlement</h3>
 
-      <p>
-          According to early settlement records preserved by
-          <a href="https://www.co.grand.co.us/977/Early-American-Settlement" target="_blank">Grand County</a>,
+        <p>
+            According to early settlement records preserved by
+            <a href="https://www.co.grand.co.us/977/Early-American-Settlement" target="_blank">Grand County</a>,
             American migration into Colorado increased significantly during the mid‑1800s. Settlers
             established homesteads, ranches, and agricultural communities across mountain valleys and
             plains regions, often near water sources, transportation routes, and mining districts.
-      </p>
-      <p>
-          Political organization began with the establishment of the Colorado Territory in 1861. Several
-          proposed constitutions were rejected, and Congress declined earlier admission attempts. The
-          Colorado Enabling Act of 1875 finally authorized Colorado to draft a constitution meeting federal
-          requirements, including taxation rules, water rights provisions, and limits on state borrowing,
-          as outlined in <a href="https://www.ebsco.com/research-starters/history/colorado-admitted-union" target="_blank">EBSCO Research Starters</a>.
-      </p>
+        </p>
 
-      <p>
-          Delegates convened in late 1875 for the constitutional convention, working through early 1876
-          to produce the document required for statehood. Their work coincided with national celebrations
-          approaching the centennial of the Declaration of Independence.
-      </p>
+        <p>
+            Local history guides from the
+            <a href="https://guides.loc.gov/colorado-local-history-genealogy" target="_blank">Library of Congress</a>
+            note that early settlement patterns were shaped by geography, available resources, and the
+            expansion of mining and ranching industries. These communities contributed to the territorial
+            population growth that later supported Colorado’s bid for statehood.
+        </p>
 
-      <p>
-          Voters approved the new constitution on July 1, 1876. Reports describe crowds filling the
-          streets on July 4 as thirty‑eight ceremonial shots were fired to symbolize Colorado’s
-          anticipated place as the thirty‑eighth state.
-      </p>
+        <p>
+            Political organization began with the establishment of the Colorado Territory in 1861. Several
+            proposed constitutions were rejected, and Congress declined earlier admission attempts. The
+            1875 enabling act finally authorized Colorado to draft a constitution meeting federal
+            requirements, including taxation rules, water rights provisions, and limits on state borrowing,
+            as outlined in <a href="https://www.ebsco.com/research-starters/history/colorado-admitted-union" target="_blank">EBSCO Research Starters</a>.
+        </p>
 
-      <p>
-          On August 1, 1876, President Grant issued the proclamation admitting Colorado to the Union.
-          The date has since remained a significant marker in Colorado’s history, commemorated annually
-          as Colorado Day.
-      </p>
+        <p>
+            Delegates convened in late 1875 for the constitutional convention, working through early 1876
+            to produce the document required for admission. Their work coincided with national celebrations
+            approaching the centennial of the Declaration of Independence.
+        </p>
 
-      <h3>Early Settlers Day – La Junta</h3>
+        <p>
+            Voters approved the new constitution on July 1, 1876. Reports describe crowds filling the
+            streets on July 4 as thirty‑eight ceremonial shots were fired to symbolize Colorado’s
+            anticipated place as the thirty‑eighth state.
+        </p>
 
-      <p>
-          In La Junta, Early Settlers Day remains one of the community’s longest‑running traditions.
-          According to event organizers and historical descriptions from
-          <a href="https://www.colorado.com/la-junta/events/family-friendly/early-settlers-day" target="_blank">Colorado.com</a>,
-            the celebration takes place annually in City Park, and features vendors,
+        <p>
+            On August 1, 1876, President Grant issued the proclamation admitting Colorado to the Union.
+            The date has since remained a significant marker in Colorado’s history, commemorated annually
+            as Colorado Day.
+        </p>
+
+        <h3>Early Settlers Day – La Junta</h3>
+
+        <p>
+            In La Junta, Early Settlers Day remains one of the community’s longest‑running traditions.
+            According to event organizers and historical descriptions from
+            <a href="https://www.colorado.com/la-junta/events/family-friendly/early-settlers-day" target="_blank">Colorado.com</a>,
+            the celebration takes place annually in City Park and features historic demonstrations, vendors,
             food booths, games, and family‑friendly activities that highlight pioneer heritage.
-      </p>
+        </p>
 
-      <p>
-          The celebration connects local history with Colorado’s broader territorial story, including the
-          miners, ranchers, Indigenous, and agricultural families who contributed to the
-          evolution of southeastern Colorado.
-      </p>
+        <!-- Vanessa Photography Images -->
+        <img src="https://www.dropbox.com/scl/fi/l9o04ydg9g26lh0s9q16p/IMG_6979.JPG?rlkey=y7tcq3u5ysa015d28z77v2w33&raw=1"
+             alt="Early Settlers Day photo 1"
+             class="feature-image">
 
-      <p>
-          As Colorado observes its sesquicentennial, inhabitants across the state continue to highlight
-          the events, traditions, and historical developments that formed its entry into the Union.
-          Early Settlers Day serves as a reminder of the stories preserved in towns like La Junta.
-      </p>
+        <img src="https://www.dropbox.com/scl/fi/0x8ztbix2w57dtnxaowpc/IMG_6980.JPG?rlkey=q00gx045mk2uy14ky0a1wx8to&raw=1"
+             alt="Early Settlers Day photo 2"
+             class="feature-image">
+
+        <img src="https://www.dropbox.com/scl/fi/ykveug2umka7prx6wljpo/IMG_6970.JPG?rlkey=4yrcn36dkwa5j8zbdiohhlp94&raw=1"
+             alt="Early Settlers Day photo 3"
+             class="feature-image">
+
+        <div class="image-caption">
+            Photo credit: Vanessa Photography
+        </div>
+
+        <p>
+            The celebration connects local history with Colorado’s broader territorial story, including the
+            miners, ranchers, Indigenous communities, and agricultural families who contributed to the
+            development of southeastern Colorado.
+        </p>
+
+        <p>
+            As Colorado observes its sesquicentennial, communities across the state continue to highlight
+            the events, traditions, and historical developments that shaped its entry into the Union.
+            Early Settlers Day serves as a reminder of the stories preserved in towns like La Junta.
+        </p>
 
     </article>
 </div>

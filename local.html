@@ -17,7 +17,6 @@
             color: #111;
         }
 
-        /* HEADER */
         .site-header {
             background: rgba(0, 0, 0, 0.65);
             color: #fff;
@@ -39,7 +38,6 @@
             opacity: 0.85;
         }
 
-        /* NAVIGATION */
         .main-nav ul {
             list-style: none;
             margin: 0;
@@ -62,7 +60,6 @@
             background-color: rgba(255, 255, 255, 0.25);
         }
 
-        /* ARTICLE CONTAINER */
         .article-container {
             max-width: 900px;
             width: 90%;
@@ -83,49 +80,19 @@
             margin-bottom: 1rem;
         }
 
-        /* RESPONSIVE VIDEO */
-        .video-container {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .video-container iframe {
+        .feature-image {
             width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border: none;
             border-radius: 10px;
+            margin: 1rem 0;
         }
 
-        @media (max-width: 600px) {
-            .video-container iframe {
-                height: 220px;
-            }
+        .image-caption {
+            font-size: 0.85rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .video-credit {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        /* HOME BUTTON */
-        .home-button {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #2563eb;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 15px 0;
-            font-weight: 600;
-        }
-
-        .home-button:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* FOOTER */
         .site-footer {
             text-align: center;
             padding: 1rem;
@@ -134,222 +101,169 @@
             background: rgba(0, 0, 0, 0.65);
             margin-top: 3rem;
         }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 600px) {
-            .headline-article h2 {
-                font-size: 1.5rem;
-            }
-
-            .article-container {
-                padding: 1rem;
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <div class="logo">
-            <h1>Ark News</h1>
-            <p>Independent Local Journalism</p>
-        </div>
+<header class="site-header">
+    <div class="logo">
+        <h1>Ark News</h1>
+        <p>Independent Local Journalism</p>
+    </div>
 
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="local.html">Local</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="local.html">Local</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main class="article-container">
-        <article class="headline-article">
+<main class="article-container">
+<article class="headline-article">
 
-            <h2>The Exceptionally Rare Double Anniversary</h2>
+    <h2>Colorado's Historic Milestone: A Century and a Half in the Union</h2>
 
-            <a href="index.html" class="home-button">← Back to Home</a>
+    <div class="headline-meta">
+        By Ronald Hernandez Jr. | August 1, 2026 | Local News
+    </div>
 
-            <div class="headline-meta">
-                By Ronald Hernandez Jr. | July 6, 2026 | Local News
-            </div>
+    <figure style="margin: 1.5rem 0; text-align: center;">
+        <img src="https://www.dropbox.com/scl/fi/rdypmyhts0s6ezpnb3y1a/LJTD_FrontPage_1-1-1898_LOC.jpg?rlkey=our7rmagw3o0uke5c82xwqafm&raw=1"
+             alt="Front page of the La Junta Tribune Democrat, January 1, 1898"
+             class="feature-image"
+             width="400"
+             height="500"
+             loading="eager"
+             fetchpriority="high">
+        <figcaption class="image-caption">
+            Front page of the La Junta Tribune Democrat from January 1, 1898. Image provided by: History Colorado
+        </figcaption>
 
-            <p>
-                In La Junta, the annual Wet Parade brought hundreds of residents to the streets yesterday,
-                turning the dry, plain hills country town into a community-wide water war. The celebration
-                carried great significance this year, falling on the 250th anniversary of the signing of the
-                Declaration of Independence, a national milestone that leads into Colorado’s own
-                sesquicentennial, as the state prepares to mark 150 years of statehood on August 1st.
-            </p>
+    </figure>
 
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/96CmuOdF-zs"
-                    title="USA 250th Anniversary Wet Parade"
-                    allowfullscreen>
-                </iframe>
+    <p>
+        On this day in history, Colorado marks 150 years since its admission to the United States,
+        a milestone recorded on August 1, 1876, when President Ulysses S. Grant signed the proclamation
+        officially ratifying Colorado as the 38th state in the Union, as documented by the
+        <a href="https://www.loc.gov/item/today-in-history/august-01/" target="_blank">Library of Congress</a>.
+    </p>
 
-                <p class="video-credit">
-                    Video Credit: Ronald Hernandez / Arkitekt Creations
-                </p>
-            </div>
+    <p>
+        The region's history stretches far earlier than its statehood. Early inhabitants included
+        agricultural cliff‑dwelling societies, followed centuries later by Spanish expeditions such
+        as Francisco Vásquez de Coronado's 1540s exploration. Interest in the region intensified in
+        the late 1850s when gold discoveries near Central City drew thousands of prospectors, according
+        to historical summaries from <a href="https://www.history.com/articles/colorado" target="_blank">History.com</a>.
+    </p>
 
-            <p>
-                As the U.S.A and its visitors from around the world celebrate the Fourth of July, the document
-                that helped make this possible is sitting enclosed in a glass case in the nation’s capital of
-                Washington D.C., that document being the 
-                <a href="https://www.archives.gov/milestone-documents/declaration-of-independence" target="_blank">
-                    Declaration of Independence
-                </a>.
-            </p>
+    <p>
+        Mining camps and ranching communes became central to early territorial life. Historical
+        accounts compiled by the <a href="https://www.aspentimes.com/news/colorado-miners-ranchers-christmas-history/" target="_blank">Aspen Times</a>
+        note that miners and ranchers influenced Colorado's early economy, influenced settlement patterns,
+        and contributed to the territorial push toward organized governance.
+    </p>
 
-            <p>
-                A five-member committee of Jefferson, Adams, Franklin, Livingston, and Sherman began drafting
-                the Declaration on June 11, 1776.
-            </p>
+    <h3>Original Coloradans</h3>
 
-            <p>
-                The document explains why the colonies declared independence, outlines basic human rights and
-                the idea that people can change or abolish destructive governments, and lists grievances
-                against King George III such as tyranny, unfair taxes, dissolving legislature, keeping
-                standing armies, and obstructing justice.
-            </p>
+    <p>
+        Research from the <a href="https://guides.loc.gov/colorado-local-history-genealogy" target="_blank">Library of Congress</a>
+        and documentary work by <a href="https://www.pbs.org/video/colorado-experience-original-coloradans/" target="_blank">PBS</a>
+        identify Colorado's earliest known inhabitants as Indigenous nations including the Ute, Cheyenne,
+        Arapaho, and Apache peoples. These populaces developed cultural traditions, trade networks,
+        and seasonal migration patterns long before European or American settlement.
+    </p>
 
-            <p>
-                Next, the Declaration addresses how the attempts of the colonists to petition were ignored,
-                their warnings dismissed, and appeals failed while The King responded with further injury.
-                Finally, the document declares the colonies to be free and independent states, absolved of the
-                allegiance of the Crown, and have the full powers of sovereign nations.
-            </p>
+    <h3>Early American Settlement</h3>
 
-            <p>
-                After several revisions through June 28th, Congress received it on July 2 following the
-                approval of the Lee Resolution. The Declaration of Independence was officially adopted on
-                July 4th, 1776.
-            </p>
+    <p>
+        According to early settlement records preserved by
+        <a href="https://www.co.grand.co.us/977/Early-American-Settlement" target="_blank">Grand County</a>,
+        American migration into Colorado increased significantly during the mid‑1800s. Settlers
+        established homesteads, ranches, and agricultural networks across mountain valleys and
+        plains regions, often near water sources, transportation routes, and mining districts.
+    </p>
 
-            <h3>Colorado, The Anniversary Companion</h3>
+    <p>
+        Local history guides from the
+        <a href="https://guides.loc.gov/colorado-local-history-genealogy" target="_blank">Library of Congress</a>
+        note that these communities contributed to the territorial
+        population growth that later supported Colorado's bid for statehood.
+    </p>
 
-            <p>
-                This year, The United States will not be alone in the festivities. Colorado is also putting
-                its party hats on and setting up the food booths. On August 1st, the Rocky Mountain state will
-                celebrate its sesquicentennial anniversary, aligning two unique signings.
-            </p>
+    <p>
+        Political organization began with the establishment of the Colorado Territory in 1861. Several
+        proposed constitutions were rejected, and Congress declined earlier admission attempts. The
+        1875 enabling act finally authorized Colorado to draft a constitution meeting federal
+        requirements, including taxation rules, water rights provisions, and limits on state borrowing,
+        as outlined in <a href="https://www.ebsco.com/research-starters/history/colorado-admitted-union" target="_blank">EBSCO Research Starters</a>.
+    </p>
 
-            <p>
-                <a href="https://archives.colorado.gov/collections/authenticated-constitution" target="_blank">
-                    Colorado’s Constitutional Convention
-                </a>
-                met from December 1875 to March 14th, 1876, to draft the state constitution required for
-                statehood. Its 75 delegates debated major issues including prior appropriation of water
-                rights, declaring water as a public resource, and establishing agricultural protections.
-            </p>
+    <p>
+        Delegates convened in late 1875 for the constitutional convention, working through early 1876
+        to produce the document required for admission. Their work coincided with national celebrations
+        approaching the centennial of the Declaration of Independence.
+    </p>
 
-            <p>
-                They also debated protecting mining from monopolies, limiting state borrowing through
-                taxation, ensuring due process rights, creating a mandatory public school system, and
-                establishing a bicameral legislature.
-            </p>
+    <p>
+        Voters approved the new constitution on July 1, 1876. Reports describe crowds filling the
+        streets on July 4 as thirty‑eight ceremonial shots were fired to symbolize Colorado's
+        anticipated place as the thirty‑eighth state.
+    </p>
 
-            <p>
-                Finally, on March 14, 1876, the Colorado Constitution was completed. After being approved by
-                Colorado voters, Congress, and signed by President Ulysses S. Grant, Colorado became a state
-                on August 1, 1876, giving it the nickname “The Centennial State.”
-            </p>
+    <p>
+        On August 1, 1876, President Grant issued the proclamation admitting Colorado to the Union.
+        The date has since remained a significant marker in Colorado's history, commemorated annually
+        as Colorado Day.
+    </p>
 
-            <p>
-                As 
-                <a href="https://www.historycolorado.org/" target="_blank">Colorado</a>
-                and the nation mark this historic milestone, take a moment to explore the stories and events
-                that shape both our state and the 
-                <a href="https://www.ushistory.org/" target="_blank">United States</a>.
-            </p>
+    <h3>Early Settlers Day – La Junta</h3>
 
-        </article>
-    </main>
+    <p>
+        In La Junta, Early Settlers Day remains one of the community's longest‑running traditions.
+        According to event organizers and historical descriptions from
+        <a href="https://www.colorado.com/la-junta/events/family-friendly/early-settlers-day" target="_blank">Colorado.com</a>,
+        the celebration takes place annually in City Park and features historic demonstrations, vendors,
+        food booths, games, and family‑friendly activities that highlight pioneer heritage.
+    </p>
 
-	 <main class="article-container">
+    <img src="https://www.dropbox.com/scl/fi/l9o04ydg9g26lh0s9q16p/IMG_6979.JPG?rlkey=y7tcq3u5ysa015d28z77v2w33&raw=1"
+         alt="Early Settlers Day photo 1"
+         class="feature-image">
 
-        <h2>La Junta Native Set to Release Psychological Horror Video Game</h2>
+    <img src="https://www.dropbox.com/scl/fi/0x8ztbix2w57dtnxaowpc/IMG_6980.JPG?rlkey=q00gx045mk2uy14ky0a1wx8to&raw=1"
+         alt="Early Settlers Day photo 2"
+         class="feature-image">
 
-        <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey"
-             alt="Gregory Montoya Feature Photo"
-             class="feature-image">
+    <img src="https://www.dropbox.com/scl/fi/ykveug2umka7prx6wljpo/IMG_6970.JPG?rlkey=4yrcn36dkwa5j8zbdiohhlp94&raw=1"
+         alt="Early Settlers Day photo 3"
+         class="feature-image">
 
-        <p><strong>Photo Credit: Gregory Montoya</strong></p>
+    <div class="image-caption">
+        Photo credit: Vanessa Photography
+    </div>
 
-        <p>
-            LA JUNTA, Colorado — Gregory Montoya, a game developer originally from the area, is preparing to 
-            release the first chapter of his newest psychological horror video game, marking a major milestone 
-            in a journey shaped by resilience, creativity, and years of self-taught programming.
-        </p>
+    <p>
+        The celebration connects local history with Colorado's broader territorial story, including the
+        miners, ranchers, Indigenous cultures, and agricultural families who contributed to the
+        transformation of southeastern Colorado.
+    </p>
 
-        <p>
-            Montoya’s childhood in La Junta was marked by instability. With a father battling alcoholism, he 
-            moved frequently and attended nine different schools before reaching adulthood. Those early 
-            challenges forced him to adapt quickly and pushed him toward creative outlets that offered 
-            structure and expression. Game development eventually became the place where imagination, 
-            discipline, and problem-solving converged.
-        </p>
+    <p>
+        As Colorado observes its sesquicentennial, communities across the state continue to highlight
+        the events, traditions, and historical evolutions that tailored its entry into the Union.
+        Early Settlers Day serves as a reminder of the stories preserved in towns like La Junta.
+    </p>
 
-        <p>
-            “Writing code felt like learning a new language,” he said, “one the computer could understand.”
-        </p>
+</article>
+</main>
 
-        <p>
-            By age 16, Montoya had already taught himself HTML, CSS, and Python, laying the groundwork for a 
-            future in programming. In 2004, he began building his first game, discovering a passion for 
-            crafting interactive worlds that allowed players to explore the environments he envisioned.
-        </p>
-
-        <p>
-            Breaking into the indie game industry came with its own obstacles. Competing for visibility in a 
-            crowded field pushed Montoya to focus on consistency, originality, and memorable experiences.
-        </p>
-
-        <p>
-            Data analysis has also become central to his work. He studies gameplay behavior to balance 
-            mechanics, pacing, and event timing, ensuring players experience tension and unpredictability.
-        </p>
-
-        <p>
-            Set for its first-chapter release in early December 2026, the game blends psychological horror 
-            with player choice, drawing inspiration from Silent Hill, Resident Evil, Fatal Frame, folklore, 
-            and urban legends.
-        </p>
-
-        <p>
-            “Make the game you’ve always wanted to play,” Montoya said.
-        </p>
-
-        <p>
-            A catastrophic setback nearly derailed the project when a hard drive failure erased the entire 
-            game. “Losing everything proved how much it meant to me,” he said.
-        </p>
-
-        <p>
-            As the release approaches, Montoya continues to inspire through persistence, ingenuity, and a 
-            commitment to pushing creative boundaries.
-        </p>
-
-        <p>
-            The game is available on Steam at the link below:
-        </p>
-
-        <p>
-            <a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank">
-                https://store.steampowered.com/app/4836860/Beguiled_Egress/
-            </a>
-        </p>
-
-    </main>
-	
-    <footer class="site-footer">
-        <p>&copy; 2026 Ark News. All rights reserved.</p>
-    </footer>
+<footer class="site-footer">
+    <p>&copy; 2026 Ark News. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

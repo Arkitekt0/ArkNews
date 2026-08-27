@@ -2,88 +2,152 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+    <title>About | Ark News</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ============================
+         GLOBAL STYLES
+         Notes:
+         - Background image is Colorado-themed.
+         - Typography matches all Ark News pages.
+         - Keep spacing consistent across pages.
+       ============================ -->
     <style>
         body {
-            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-            background: linear-gradient(to bottom, #a8d0e6, #6fb1c8, #3f7f8c);
-            color: #fff;
             margin: 0;
-            padding: 20px;
+            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+            background-image: url("https://www.dropbox.com/scl/fi/a2vcwbz0fn5fyyuvguxs7/RockyMountains.jpeg?rlkey=z13dghmbncutxiuyx14ctzf8j&raw=1");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #111;
+            line-height: 1.6;
         }
 
-        /* Page container */
+        /* ============================
+           HEADER + NAVIGATION
+           Notes:
+           - Matches all other pages.
+           - Do not change structure unless updating site-wide.
+        ============================ */
+        .site-header {
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .logo p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: background 0.25s ease;
+        }
+
+        .main-nav a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============================
+           MAIN CONTENT CONTAINER
+           Notes:
+           - This is your storytelling section.
+           - Replace text inside only; keep container styling.
+        ============================ */
         .about-container {
             max-width: 900px;
-            width: 90%;
-            margin: auto;
-            background: rgba(0, 0, 0, 0.35);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin: 0;
+            width: 92%;
+            margin: 2.5rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         h2 {
-            margin-top: 25px;
-            font-size: 1.5rem;
+            margin-top: 0;
+            font-size: 2rem;
+            color: #222;
         }
 
-        p, li {
-            line-height: 1.6;
+        h3 {
+            margin-top: 1.8rem;
+            font-size: 1.4rem;
+            color: #333;
+        }
+
+        p {
             font-size: 1rem;
+            margin-bottom: 1rem;
         }
 
         ul {
-            margin-top: 10px;
-            padding-left: 20px;
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
         }
 
         li {
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
         }
 
-        /* Home button */
-        .home-button {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: rgba(0,0,0,0.4);
+        /* ============================
+           FOOTER
+           Notes:
+           - Matches all pages.
+           - Safe to add links or credits here.
+        ============================ */
+        .site-footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.85rem;
             color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.65);
+            margin-top: 3rem;
         }
 
-        .home-button:hover {
-            background-color: rgba(0,0,0,0.6);
-        }
-
-        /* Mobile optimization */
+        /* ============================
+           MOBILE OPTIMIZATION
+           Notes:
+           - Keep responsive typography.
+           - Adjust only if adding new sections.
+        ============================ */
         @media (max-width: 600px) {
-            h1 {
-                font-size: 1.7rem;
+            .about-container {
+                padding: 1.2rem;
             }
 
             h2 {
-                font-size: 1.3rem;
+                font-size: 1.6rem;
             }
 
-            p, li {
-                font-size: 0.95rem;
-            }
-
-            .about-container {
-                padding: 15px;
+            h3 {
+                font-size: 1.25rem;
             }
         }
     </style>
@@ -91,60 +155,125 @@
 
 <body>
 
-<a href="index.html" class="home-button">← Back to Home</a>
+<!-- ============================
+     HEADER SECTION
+     Notes:
+     - Do not remove navigation links.
+     - Update only if adding new pages.
+============================ -->
+<header class="site-header">
+    <div class="logo">
+        <h1>Ark News</h1>
+        <p>Independent Local Journalism</p>
+    </div>
 
-<div class="about-container">
-
-    <header>
-        <h1>About Me</h1>
-    </header>
-
-    <section>
-        <p>
-            I am a data journalist dedicated to transforming complex datasets into clear, meaningful stories 
-            that help the public understand issues shaping their communities. My work combines statistical 
-            analysis, investigative reporting, and transparent methodology principles emphasized in 
-            leading data journalism research and practice.
-        </p>
-    </section>
-
-    <section>
-        <h2>My Mission</h2>
-        <p>
-            My mission is to use data responsibly and critically, recognizing that datasets are never neutral. 
-            I aim to reveal patterns, inequities, and insights that traditional reporting may overlook. 
-            I follow evidence‑based practices and prioritize clarity, accuracy, and public accountability 
-            in every story I produce.
-        </p>
-    </section>
-
-    <section>
-        <h2>How I Work</h2>
-        <p>
-            I follow established data journalism research: gathering data through public records, scraping, 
-            open data portals, and FOIA requests.
-        </p>
-    </section>
-
-    <section>
-        <h2>My Values</h2>
+    <nav class="main-nav">
         <ul>
-            <li><strong>Transparency:</strong> I publish methodologies, sources, and limitations for every dataset.</li>
-            <li><strong>Accuracy:</strong> I verify data quality, check for bias, and validate findings with experts.</li>
-            <li><strong>Ethics:</strong> I consider the social impact of data stories and avoid misrepresenting statistics.</li>
-            <li><strong>Accessibility:</strong> I present data visually and narratively so all readers can understand it.</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="local.html">Local</a></li>
+            <li><a href="featuredpeople.html">Featured People</a></li>
+            <li><a href="about.html" style="background: rgba(255,255,255,0.3);">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-    </section>
+    </nav>
+</header>
 
-    <section>
-        <h2>Contact</h2>
-        <p>
-            I welcome questions, feedback, and data tips. Journalism is a collaborative process, and I encourage 
-            readers, researchers, and community members to reach out.
-        </p>
-    </section>
+<!-- ============================
+     MAIN ABOUT SECTION
+     Notes:
+     - Storytelling content based on your resume.
+     - Replace text freely; keep structure.
+============================ -->
+<main class="about-container">
 
-</div>
+    <h2>About the Journalist</h2>
+
+    <p>
+        Every story begins somewhere, and mine began in southeastern Colorado, a place where history, community, and 
+        resilience shape the rhythm of everyday life. My name is <strong>Ronald Hernandez Jr.</strong>, and I am a 
+        data journalist, creative consultant, and founder of <strong>Arkitekt Creations</strong>, the parent brand 
+        behind Ark News.
+    </p>
+
+    <p>
+        My path into journalism wasn’t a straight line. It started with a love for storytelling, sharpened through a 
+        <strong>Bachelor of Fine Arts in Creative Writing</strong> at Full Sail University, where I earned the 
+        <em>Course Directors Award in Film</em> for script writing and editing. That foundation taught me how to build 
+        narratives that resonate not just with readers, but with communities.
+    </p>
+
+    <p>
+        Today, I’m continuing my education through a <strong>Master of Fine Arts in New Media Journalism</strong>, 
+        expanding my skills in digital reporting, multimedia production, and data‑driven storytelling. My work blends 
+        traditional journalism values with modern tools, always guided by the principles of the 
+        <strong>Society of Professional Journalists</strong>: seek truth, report it, minimize harm, act independently, 
+        and remain accountable.
+    </p>
+
+    <h3>The Work I Do</h3>
+
+    <p>
+        As CEO and Creative Consultant at Arkitekt Creations, I’ve built a multimedia brand from the ground up. I’ve 
+        produced journalism, advertising, and digital content for local and regional audiences, and I’ve led creative 
+        campaigns that generated measurable engagement  including a cross‑platform strategy that increased viewership 
+        by over <strong>1000%</strong> through Meta Business analytics.
+    </p>
+
+    <p>
+        Ark News grew out of that momentum. It became a home for the stories that matter most to southeastern Colorado: 
+        historical features, community profiles, investigative reporting, and cultural preservation. Through Ark News, 
+        I’ve interviewed leaders like <strong>Mayor Joe Ayala</strong>, documented local traditions, analyzed decades 
+        of housing data, and published historical work marking Colorado’s 150th anniversary and the nation’s 250th.
+    </p>
+
+    <p>
+        My reporting also extends into deeper issues  including investigations into foster care neglect, where I’ve 
+        compiled credible case data and agency findings to highlight systemic concerns affecting vulnerable families.
+    </p>
+
+    <h3>How I Work</h3>
+
+    <p>
+        My approach to journalism is hands‑on and community‑centered. I combine:
+    </p>
+
+    <ul>
+        <li>Interviewing and narrative development</li>
+        <li>Data analysis and investigative research</li>
+        <li>SEO and digital content strategy</li>
+        <li>Adobe Creative Suite production</li>
+        <li>Brand strategy and creative consulting</li>
+        <li>Editorial evaluation and content refinement</li>
+        <li>Collaborative leadership and project coordination</li>
+    </ul>
+
+    <p>
+        Whether I’m analyzing six decades of housing data or photographing historic landmarks, my goal is the same: 
+        to create journalism that informs, empowers, and preserves the identity of southeastern Colorado.
+    </p>
+
+    <h3>Looking Forward</h3>
+
+    <p>
+        Arkitekt Creations continues to grow. Alongside Ark News, I’m developing <strong>mPaKt Gaming</strong>, a 
+        gaming‑focused extension of the brand that blends storytelling, entertainment, and community engagement.
+    </p>
+
+    <p>
+        No matter how the brand expands, my mission stays rooted in the same place, the communities of Otero County 
+        and the stories that deserve to be told.
+    </p>
+
+</main>
+
+<!-- ============================
+     FOOTER SECTION
+     Notes:
+     - Safe to add credits or links.
+============================ -->
+<footer class="site-footer">
+    <p>&copy; 2026 Ark News. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

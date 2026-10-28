@@ -1,188 +1,552 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  Ark News homepage. Styles are included in this file for direct Dreamweaver use.
+  See README.md for the page map and maintenance notes.
+-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Home | Ark News</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ark News publishes independent local journalism.">
+  <meta name="theme-color" content="#17332f">
+  <title>Ark News | Independent Local Journalism</title>
+<style>
+/* Theme tokens: edit colors, typefaces and content width in this block. */
+:root {
+  color-scheme: light;
+  --color-ink: #1e2d30;
+  --color-muted: #526366;
+  --color-pine: #17332f;
+  --color-pine-light: #2b5449;
+  --color-rust: #a84f32;
+  --color-paper: #f3f0e7;
+  --color-card: #fffdf8;
+  --color-line: #d8ddd5;
+  --font-body: "Segoe UI", Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --content-width: 72rem;
+}
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-            background-image: url("https://www.dropbox.com/scl/fi/0bbk56ncgi68bnuyzg5mw/Welcome-to-Colorado.jpeg?rlkey=j21c94rwwp6pyt6tfibzeagsq&raw=1");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #111;
-        }
+* {
+  box-sizing: border-box;
+}
 
-        .site-header {
-            background: rgba(0, 0, 0, 0.65);
-            color: #fff;
-            padding: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        .logo h1 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
+/* Base typography and the subtle topographic page background. */
+body {
+  min-width: 20rem;
+  margin: 0;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  background-image: repeating-radial-gradient(ellipse at 0% 0%, transparent 0 1.25rem, rgb(23 51 47 / 5%) 1.3rem 1.36rem, transparent 1.42rem 2.5rem);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+}
 
-        .logo p {
-            margin: 0;
-            font-size: 0.9rem;
-            opacity: 0.85;
-        }
+a {
+  color: inherit;
+}
 
-        .main-nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+a:focus-visible {
+  outline: 3px solid #d68b52;
+  outline-offset: 4px;
+}
 
-        .main-nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 6px 10px;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.15);
-        }
+.skip-link {
+  position: absolute;
+  z-index: 10;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  transform: translateY(-160%);
+  border-radius: 0.35rem;
+  color: var(--color-ink);
+  background: var(--color-card);
+  font-weight: 700;
+}
 
-        .main-nav a:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-        }
+.skip-link:focus {
+  transform: translateY(0);
+}
 
-        .article-container {
-            max-width: 900px;
-            width: 90%;
-            margin: 2rem auto;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
+/* Masthead image and contrast overlay. Replace the Dropbox URL with a local image path if needed. */
+.site-header {
+  position: relative;
+  overflow: hidden;
+  color: #fffdf8;
+  background-color: var(--color-pine);
+  background-image: linear-gradient(100deg, rgb(16 43 39 / 92%), rgb(16 43 39 / 72%)), url("https://www.dropbox.com/scl/fi/0bbk56ncgi68bnuyzg5mw/Welcome-to-Colorado.jpeg?rlkey=j21c94rwwp6pyt6tfibzeagsq&raw=1");
+  background-position: center, center 48%;
+  background-size: cover;
+}
 
-        .site-footer {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.85rem;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.65);
-            margin-top: 3rem;
-        }
-    </style>
+.header-inner,
+.footer-inner,
+.page-shell {
+  width: min(var(--content-width), calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 8rem;
+  padding-block: 1.4rem;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.brand-tagline {
+  margin-top: 0.55rem;
+  color: #d8e3db;
+  font-size: 0.83rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Primary navigation. Keep filenames consistent across the pages. */
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.3rem;
+  color: #f5f6f0;
+  font-size: 0.94rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #fff;
+  background: rgb(255 255 255 / 14%);
+}
+
+.header-rule {
+  height: 0.28rem;
+  background: linear-gradient(90deg, var(--color-rust) 0 18%, #d08a50 18% 34%, #e7d6b2 34% 100%);
+}
+
+.page-shell {
+  padding-block: clamp(2.5rem, 6vw, 5rem) 5rem;
+}
+
+.page-intro {
+  max-width: 47rem;
+  margin-bottom: 2.25rem;
+}
+
+.eyebrow,
+.story-section {
+  margin: 0 0 0.65rem;
+  color: var(--color-rust);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.page-intro h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.3vw, 3.15rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.page-intro > p:last-child {
+  margin: 0.75rem 0 0;
+  color: var(--color-muted);
+  font-size: 1.08rem;
+}
+
+/* Lead article and related audio layout. */
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(17rem, 0.9fr);
+  align-items: start;
+  gap: 1.5rem;
+}
+
+.story-card,
+.audio-card {
+  border: 1px solid var(--color-line);
+  border-radius: 0.8rem;
+  background: var(--color-card);
+  box-shadow: 0 0.5rem 1.5rem rgb(30 45 48 / 5%);
+}
+
+.story-card {
+  padding: clamp(1.4rem, 3vw, 2.5rem);
+}
+
+.story-header {
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.story-section span {
+  padding-inline: 0.25rem;
+  color: #8a9690;
+}
+
+.story-section em {
+  color: var(--color-pine-light);
+  font-style: normal;
+}
+
+.story-header h2 {
+  max-width: 48rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.byline {
+  margin: 1rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.93rem;
+  font-weight: 650;
+}
+
+.article-body {
+  padding-top: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.78;
+}
+
+.article-body p {
+  margin: 1.2rem 0;
+}
+
+.article-body strong {
+  color: #263f3a;
+}
+
+.article-body a {
+  color: #24594d;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+/* Source panel groups the primary references for this article. */
+.source-box {
+  margin-top: 1.5rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--color-line);
+  border-left: 0.25rem solid var(--color-rust);
+  border-radius: 0.4rem;
+  background: #f3f0e7;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.source-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+.source-box ul { margin: 0; padding-left: 1.25rem; }
+.source-box li + li { margin-top: 0.35rem; }
+.source-box a { color: #24594d; font-weight: 650; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 0.15em; }
+.source-box .source-note { margin: 0.65rem 0 0; color: var(--color-muted); font-size: 0.88rem; }
+
+.audio-card {
+  position: sticky;
+  top: 1.5rem;
+  padding: 1.4rem;
+}
+
+.audio-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.audio-description {
+  margin: 0.55rem 0 1rem;
+  color: var(--color-muted);
+}
+
+.audio-player {
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: 0.45rem;
+  background: #f1f1ee;
+}
+
+.audio-player iframe {
+  display: block;
+  width: 100%;
+  min-height: 19rem;
+  border: 0;
+}
+
+.audio-credit {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.85rem 0 0;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.audio-credit a {
+  color: var(--color-pine-light);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.audio-credit span {
+  display: none;
+}
+
+.site-footer {
+  color: #e6ece5;
+  background: var(--color-pine);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.1rem;
+  font-size: 0.86rem;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+/* Tablet and phone layout: stack navigation and content on narrower screens. */
+@media (max-width: 52rem) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .site-nav ul {
+    justify-content: flex-start;
+    margin-left: -0.75rem;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .audio-card {
+    position: static;
+  }
+}
+
+/* Narrow phone refinements. */
+@media (max-width: 34rem) {
+  .header-inner,
+  .footer-inner,
+  .page-shell {
+    width: min(calc(100% - 1.5rem), var(--content-width));
+  }
+
+  .site-nav a {
+    padding: 0.45rem 0.55rem;
+    font-size: 0.88rem;
+  }
+
+  .story-card,
+  .audio-card {
+    border-radius: 0.55rem;
+  }
+
+  .audio-player iframe {
+    min-height: 16rem;
+  }
+}
+
+/* Honor reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+  </style>
 </head>
-
 <body>
+  <!-- Keyboard users can skip directly to this page's unique content. -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-<header class="site-header">
-    <div class="logo">
-        <h1>Ark News</h1>
-        <p>Independent Local Journalism</p>
+  <!-- Shared masthead: publication name, tagline and primary navigation. -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Ark News home">
+        <span class="brand-name">Ark News</span>
+        <span class="brand-tagline">Independent Local Journalism</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="local.html">Local</a></li>
+          <li><a href="featuredpeople.html">Featured People</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+    <div class="header-rule" aria-hidden="true"></div>
+  </header>
 
-    <!-- ============================
-     NAVIGATION BAR (SITE-WIDE)
-     Notes:
-     - Replace only the highlighted link per page.
-     - Keep structure identical for consistency.
-============================ -->
-<nav class="main-nav">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="local.html">Local</a></li>
-        <li><a href="featuredpeople.html">Featured People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
-
-
-</header>
-
-<main class="article-container">
-
-    <!-- ⭐ SOUNDCloud EMBED SECTION ⭐ -->
-    <section class="embed-section">
-        <h2>Featured Audio</h2>
-        <p>Listen to our latest audio feature from Ark News:</p>
-
-        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2388340026&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/arkitekt-creations" title="Arkitekt Creations" target="_blank" style="color: #cccccc; text-decoration: none;">Arkitekt Creations</a> · <a href="https://soundcloud.com/arkitekt-creations/understanding-how-el-nino" title="Understanding How El Nino Influences Weather Across Southeastern Colorado" target="_blank" style="color: #cccccc; text-decoration: none;">Understanding How El Nino Influences Weather Across Southeastern Colorado</a></div><!-- ⭐ PASTE YOUR SOUNDCLOUD EMBED CODE BELOW ⭐ -->
-        <div class="audio-embed">
-
-        </div>
+  <!-- Homepage content: introduction, lead story and audio feature. -->
+  <main class="page-shell" id="main-content">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">Colorado reporting</p>
+      <h1 id="page-title">Local stories. Clear reporting.</h1>
+      <p>Independent local journalism from southeastern Colorado.</p>
     </section>
 
-    <hr style="margin: 2rem 0; border: none; border-top: 2px solid #ccc;">
+    <div class="content-grid">
+      <!-- Lead story: update category, headline, byline and article copy together. -->
+      <article class="story-card">
+        <header class="story-header">
+          <p class="story-section">Climate &amp; Weather <span aria-hidden="true">/</span> <em>The Blueprint</em></p>
+          <h2>Understanding El Niño’s Influence on Southeastern Colorado</h2>
+          <p class="byline">By Ronald Hernandez Jr.</p>
+        </header>
 
-    <!-- ⭐ ARTICLE GOES BELOW THIS LINE ⭐ -->
+        <div class="article-body">
+          <p>
+            Climate patterns that impact southeastern Colorado often begin thousands of miles away in the tropical Pacific Ocean.
+            During a recent interview for <em>The Blueprint</em>, climatologist <strong>Allie Mazurek</strong> of the
+            Colorado Climate Center explained how El Niño events develop, how scientists identify them, and why they matter
+            for communities across Otero County. Her explanations provide important context for residents who have observed
+            shifting weather trends in recent years.
+          </p>
 
+          <p>
+            El Niño is one phase of the broader <strong>El Niño–Southern Oscillation (ENSO)</strong>, a climate pattern defined
+            by changes in sea surface temperatures in the equatorial Pacific. According to Mazurek, El Niño occurs when ocean
+            temperatures rise above normal, which alters atmospheric circulation and shifts storm tracks across the United States.
+            The <strong>National Oceanic and Atmospheric Administration (NOAA)</strong> provides detailed
+            <a href="https://cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener noreferrer">monitoring and ENSO outlooks</a>
+            for these temperature changes and their global effects.
+          </p>
 
- <article class="headline-article">
+          <p>
+            These changes can influence precipitation in Colorado, particularly in the southern part of the state. Mazurek noted
+            that fall months show the strongest historical connection between El Niño conditions and above-average moisture.
+            Winter outcomes are more complex, with northern Colorado sometimes experiencing increased snowfall during La Niña years.
+            She emphasized that these patterns are not absolute, citing recent winters in which expected results did not occur.
+            The Colorado Climate Center also describes
+            <a href="https://climate.colostate.edu/co_enso.html" target="_blank" rel="noopener noreferrer">ENSO’s Colorado influence as variable</a>,
+            and NOAA presents seasonal outlooks as probabilities rather than fixed predictions.
+          </p>
 
-    <h2>Understanding El Niño’s Influence on Southeastern Colorado</h2>
+          <p>
+            Advances in climate modeling and machine learning are improving long-range forecasting, although Mazurek described
+            seasonal prediction as an area that continues to develop. Global models can identify broad trends, but local outcomes —
+            such as whether a storm will track directly over Otero County — remain difficult to determine months in advance.
+          </p>
 
-    <div class="headline-meta">
-        By Ronald Hernandez Jr. | Climate &amp; Weather | The Blueprint
+          <p>
+            Mazurek also highlighted ways communities can support climate research. The
+            <strong>Community Collaborative Rain, Hail and Snow Network (CoCoRaHS)</strong>
+            <a href="https://www.cocorahs.org/Content.aspx?page=welcometococorahs" target="_blank" rel="noopener noreferrer">invites volunteers to report daily precipitation</a>,
+            providing observations used by weather and climate professionals.
+          </p>
+
+          <p>
+            Her insights show how global climate systems influence local conditions and how community participation strengthens
+            scientific understanding across southeastern Colorado.
+          </p>
+
+          <aside class="source-box" aria-labelledby="climate-sources-title">
+            <h3 id="climate-sources-title">Sources and context</h3>
+            <ul>
+              <li><a href="https://cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml" target="_blank" rel="noopener noreferrer">NOAA Climate Prediction Center: ENSO Diagnostic Discussion</a> — current monitoring and outlook probabilities.</li>
+              <li><a href="https://climate.colostate.edu/co_enso.html" target="_blank" rel="noopener noreferrer">Colorado Climate Center: ENSO and Colorado</a> — Colorado-specific context and limits of seasonal signals.</li>
+              <li><a href="https://www.cocorahs.org/Content.aspx?page=welcometococorahs" target="_blank" rel="noopener noreferrer">CoCoRaHS: Volunteer Guide</a> — how volunteers report local precipitation.</li>
+            </ul>
+            <p class="source-note">The interview provides the statements attributed to Allie Mazurek. These links provide scientific and program context; they do not independently confirm the interview quotations.</p>
+          </aside>
+        </div>
+      </article>
+
+      <!-- Audio feature: update the iframe src and SoundCloud links together.
+           Use current embed code from the track's SoundCloud Share > Embed panel. -->
+      <aside class="audio-card" id="featured-audio" aria-labelledby="audio-title">
+        <p class="eyebrow">Ark News audio</p>
+        <h2 id="audio-title">Featured audio</h2>
+        <p class="audio-description">Listen to our latest audio feature:</p>
+
+        <div class="audio-player">
+          <iframe
+            width="100%"
+            height="300"
+            title="SoundCloud player: Understanding How El Niño Influences Weather Across Southeastern Colorado"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2388340026&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"
+            loading="lazy"
+            allow="autoplay; encrypted-media">
+          </iframe>
+        </div>
+
+        <p class="audio-credit">
+          <a href="https://soundcloud.com/arkitekt-creations" target="_blank" rel="noopener noreferrer">Arkitekt Creations</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://soundcloud.com/arkitekt-creations/understanding-how-el-nino" target="_blank" rel="noopener noreferrer">
+            Understanding How El Niño Influences Weather Across Southeastern Colorado
+          </a>
+        </p>
+        <a class="open-track" href="https://soundcloud.com/arkitekt-creations/understanding-how-el-nino" target="_blank" rel="noopener noreferrer">Open the track on SoundCloud</a>
+      </aside>
     </div>
+  </main>
 
-    <p>
-        Climate patterns that impact southeastern Colorado often begin thousands of miles away in the tropical Pacific Ocean. 
-        During a recent interview for <em>The Blueprint</em>, climatologist <strong>Allie Mazurek</strong> of the 
-        Colorado Climate Center explained how El Niño events develop, how scientists identify them, and why they matter 
-        for communities across Otero County. Her explanations provide important context for residents who have observed 
-        shifting weather trends in recent years.
-    </p>
-
-    <p>
-        El Niño is one phase of the broader <strong>El Niño–Southern Oscillation (ENSO)</strong>, a climate pattern defined 
-        by changes in sea surface temperatures in the equatorial Pacific. According to Mazurek, El Niño occurs when ocean 
-        temperatures rise above normal, which alters atmospheric circulation and shifts storm tracks across the United States. 
-        The <strong>National Oceanic and Atmospheric Administration (NOAA)</strong> provides detailed monitoring of these 
-        temperature changes and their global effects.
-    </p>
-
-    <p>
-        These changes can influence precipitation in Colorado, particularly in the southern part of the state. Mazurek noted 
-        that fall months show the strongest historical connection between El Niño conditions and above‑average moisture. 
-        Winter outcomes are more complex, with northern Colorado sometimes experiencing increased snowfall during La Niña years. 
-        She emphasized that these patterns are not absolute, citing recent winters in which expected results did not occur. 
-        NOAA’s seasonal outlooks present probabilities rather than fixed predictions to reflect this uncertainty.
-    </p>
-
-    <p>
-        Advances in climate modeling and machine learning are improving long‑range forecasting, although Mazurek described 
-        seasonal prediction as an area that continues to develop. Global models can identify broad trends, but local outcomes — 
-        such as whether a storm will track directly over Otero County — remain difficult to determine months in advance.
-    </p>
-
-    <p>
-        Mazurek also highlighted ways communities can support climate research. The 
-        <strong>Community Collaborative Rain, Hail and Snow Network (CoCoRaHS)</strong> allows volunteers to submit daily 
-        precipitation measurements, providing valuable information that supports both NOAA and the National Weather Service.
-    </p>
-
-    <p>
-        Her insights show how global climate systems influence local conditions and how community participation strengthens 
-        scientific understanding across southeastern Colorado.
-    </p>
-
-</article>
-   <!-- ⭐ PLACEHOLDER FOR NEXT ARTICLE ⭐ -->
-    <!-- paste any new article block here -->
-
-</main>
-
-<footer class="site-footer">
-    <p>&copy; 2026 Ark News. All rights reserved.</p>
-</footer>
-
+  <!-- Shared footer. Update the copyright year during annual maintenance. -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 Ark News. All rights reserved.</p>
+      <p>Independent Local Journalism</p>
+    </div>
+  </footer>
 </body>
 </html>
+
+

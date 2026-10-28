@@ -1,248 +1,434 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Profiles, interviews and community spotlights from Ark News.">
+  <meta name="theme-color" content="#17332f">
   <title>Featured People | Ark News</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Featured People — curated profiles and feature stories from Ark News." />
 
   <style>
-    :root{
-      --panel-bg: rgba(255,255,255,0.94);
-      --header-bg: rgba(0,0,0,0.65);
-      --muted: #666;
-      --accent: #0b6;
-      --max-width: 1100px;
-      --radius: 10px;
-      --gap: 1rem;
-      --card-min: 260px;
+    /* Theme tokens. Keep these aligned with index.html while each page remains self-contained. */
+    :root {
+      color-scheme: light;
+      --ink: #1e2d30;
+      --muted: #526366;
+      --pine: #17332f;
+      --pine-light: #2b5449;
+      --rust: #a84f32;
+      --paper: #f3f0e7;
+      --card: #fffdf8;
+      --line: #d8ddd5;
+      --body-font: "Segoe UI", Arial, sans-serif;
+      --display-font: Georgia, "Times New Roman", serif;
+      --content-width: 72rem;
     }
 
-    /* Base */
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
-      background-image: url("https://www.dropbox.com/scl/fi/a2vcwbz0fn5fyyuvguxs7/RockyMountains.jpeg?rlkey=z13dghmbncutxiuyx14ctzf8j&raw=1");
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    /* Base page background uses a quiet contour pattern to connect to the Colorado setting. */
+    body {
+      min-width: 20rem;
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: repeating-radial-gradient(
+        ellipse at 0% 0%,
+        transparent 0 1.25rem,
+        rgb(23 51 47 / 5%) 1.3rem 1.36rem,
+        transparent 1.42rem 2.5rem
+      );
+      font-family: var(--body-font);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid #d68b52;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      z-index: 10;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      transform: translateY(-160%);
+      border-radius: 0.35rem;
+      color: var(--ink);
+      background: var(--card);
+      font-weight: 700;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* Shared masthead. This page uses the Rocky Mountains image with the same dark overlay as the homepage. */
+    .site-header {
+      color: #fffdf8;
+      background-color: var(--pine);
+      background-image:
+        linear-gradient(100deg, rgb(16 43 39 / 92%), rgb(16 43 39 / 72%)),
+        url("https://www.dropbox.com/scl/fi/a2vcwbz0fn5fyyuvguxs7/RockyMountains.jpeg?rlkey=z13dghmbncutxiuyx14ctzf8j&raw=1");
+      background-position: center, center 48%;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      color:#111;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
     }
 
-    /* Header */
-    .site-header{
-      background:var(--header-bg);
-      color:#fff;
-      padding:1rem;
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      align-items:center;
-      gap:.75rem;
-    }
-    .logo h1{margin:0;font-size:1.6rem;}
-    .logo p{margin:0;font-size:.9rem;opacity:.9;}
-    .main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap;}
-    .main-nav a{
-      color:#fff;text-decoration:none;font-weight:600;padding:6px 10px;border-radius:6px;
-      background:rgba(255,255,255,0.12);
-    }
-    .main-nav a:focus, .main-nav a:hover{background:rgba(255,255,255,0.22);outline:none;}
-
-    /* Page container */
-    .page {
-      max-width:var(--max-width);
-      margin:2rem auto;
-      width:90%;
-      background: linear-gradient(rgba(255,255,255,0.96), rgba(255,255,255,0.92));
-      border-radius:var(--radius);
-      padding:1.25rem;
-      box-shadow:0 6px 18px rgba(0,0,0,0.25);
+    .header-inner,
+    .footer-inner,
+    .page-shell {
+      width: min(var(--content-width), calc(100% - 3rem));
+      margin-inline: auto;
     }
 
-    /* Intro */
-    .intro{
-      margin-bottom:1rem;
-    }
-    .intro h2{margin:.25rem 0 0;font-size:1.4rem;}
-    .intro p{margin:.25rem 0;color:var(--muted);}
-
-    /* Stories grid */
-    .stories{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
-      gap:var(--gap);
-      align-items:start;
+    .header-inner {
+      display: flex;
+      min-height: 12rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-block: 1.5rem;
     }
 
-    /* Story card */
-    .story-card{
-      background:var(--panel-bg);
-      border-radius:8px;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      min-height:220px;
-      box-shadow:0 4px 10px rgba(0,0,0,0.12);
-      transition:transform .18s ease, box-shadow .18s ease;
+    .brand {
+      display: inline-flex;
+      flex-direction: column;
+      color: inherit;
+      text-decoration: none;
     }
-    .story-card:focus-within,
-    .story-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 10px 24px rgba(0,0,0,0.18);
+    .brand-name {
+      font-family: var(--display-font);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgb(0 0 0 / 25%);
     }
-
-    .story-media{
-      width:100%;
-      height:0;
-      padding-bottom:56.25%; /* 16:9 ratio */
-      position:relative;
-      background:#ddd;
-    }
-    .story-media img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-      display:block;
+    .brand-tagline {
+      margin-top: 0.6rem;
+      color: #e5ece5;
+      font-size: 0.82rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
     }
 
-    .story-body{
-      padding:0.9rem 1rem;
-      display:flex;
-      flex-direction:column;
-      gap:.5rem;
-      flex:1 1 auto;
+    /* Shared navigation; aria-current identifies the page being viewed. */
+    .site-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.35rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
-    .story-title{
-      margin:0;font-size:1.05rem;
-      line-height:1.25;
+    .site-nav a {
+      display: inline-block;
+      padding: 0.55rem 0.75rem;
+      border-radius: 0.3rem;
+      color: #fffdf8;
+      font-size: 0.94rem;
+      font-weight: 650;
+      text-decoration: none;
     }
-    .story-meta{
-      font-size:.85rem;color:var(--muted);
-      display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;
-    }
-    .story-excerpt{
-      margin-top:.4rem;color:#222;flex:1 1 auto;
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] { background: rgb(255 255 255 / 17%); }
+
+    .header-rule {
+      height: 0.28rem;
+      background: linear-gradient(90deg, var(--rust) 0 18%, #d08a50 18% 34%, #e7d6b2 34% 100%);
     }
 
-    .story-actions{
-      display:flex;gap:.5rem;align-items:center;margin-top:.6rem;
+    /* Page introduction differs from the homepage's lead-story layout. */
+    .page-shell { padding-block: clamp(2.5rem, 6vw, 5rem); }
+    .page-intro { max-width: 47rem; margin-bottom: 2.25rem; }
+    .eyebrow {
+      margin: 0 0 0.65rem;
+      color: var(--rust);
+      font-size: 0.76rem;
+      font-weight: 750;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      text-transform: uppercase;
     }
-    .btn{
-      display:inline-block;padding:.45rem .6rem;border-radius:6px;text-decoration:none;font-weight:600;
-      background:rgba(0,0,0,0.06);color:#111;border:1px solid rgba(0,0,0,0.06);
-      cursor:pointer;
+    .page-intro h1 {
+      margin: 0;
+      font-family: var(--display-font);
+      font-size: clamp(2.2rem, 4.3vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
     }
-    .btn:focus, .btn:hover{background:rgba(0,0,0,0.12);outline:none;}
-
-    /* Details-based inline article */
-    details.story-full{
-      border-top:1px solid rgba(0,0,0,0.06);
-      margin-top:.75rem;
-      padding-top:.75rem;
-      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));
-      border-radius:6px;
-    }
-    details.story-full summary{
-      list-style:none;
-      display:inline-block;
-      margin:0;
-      padding:0;
-      cursor:pointer;
-    }
-    details.story-full summary::-webkit-details-marker{display:none;}
-    .full-article{
-      margin-top:.6rem;
-      color:#222;
-    }
-    .full-article p{margin:.6rem 0;}
-    .full-article .feature-image{
-      max-width:420px;
-      margin:0 0 .6rem 0;
-      display:block;
-    }
-    .full-article .video-container iframe{width:100%;height:320px;border:0;border-radius:8px;}
-
-    /* Footer */
-    .site-footer{
-      text-align:center;padding:1rem;font-size:.85rem;color:#fff;background:var(--header-bg);margin-top:1.25rem;border-radius:0 0 var(--radius) var(--radius);
+    .page-intro > p:last-child {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
-    /* Accessibility helpers */
-    .sr-only{
-      position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px;
+    /* Profile index: the 7/5 split gives the lead profile more room than the second card. */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: start;
+      gap: 1.25rem;
+    }
+    .story-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 0.8rem;
+      background: var(--card);
+      box-shadow: 0 0.5rem 1.5rem rgb(30 45 48 / 8%);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .story-card:hover,
+    .story-card:focus-within {
+      transform: translateY(-3px);
+      box-shadow: 0 0.8rem 1.8rem rgb(30 45 48 / 12%);
+    }
+    .story-card--mayor { grid-column: span 7; }
+    .story-card--creator {
+      grid-column: span 5;
+      border-color: var(--pine);
+      color: #f6f4ec;
+      background: var(--pine);
     }
 
-    /* Responsive adjustments */
-    @media (max-width:900px){
-      .video-container iframe{height:240px;}
+    /* Portrait images remain meaningful content and retain descriptive alt text. */
+    .story-media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      margin: 0;
+      background: #d8ddd5;
     }
-    @media (max-width:600px){
-      .logo h1{font-size:1.25rem;}
-      .story-title{font-size:1rem;}
-      .video-container iframe{height:200px;}
+    .story-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-media figcaption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 0.6rem 0.8rem;
+      color: #fff;
+      background: linear-gradient(transparent, rgb(0 0 0 / 72%));
+      font-size: 0.78rem;
+    }
+
+    .story-body {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding: clamp(1.2rem, 2.5vw, 1.8rem);
+    }
+    .story-type {
+      margin: 0;
+      color: var(--rust);
+      font-size: 0.74rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .story-card--creator .story-type { color: #e7b48f; }
+    .story-title {
+      margin: 0;
+      font-family: var(--display-font);
+      font-size: clamp(1.45rem, 2.3vw, 2rem);
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.16;
+    }
+    .story-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.3rem 0.55rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+    .story-card--creator .story-meta { color: #d7e2dc; }
+    .story-excerpt {
+      margin: 0;
+      color: #3f4d4e;
+    }
+    .story-card--creator .story-excerpt { color: #e8eee8; }
+
+    /* Native disclosure keeps full profiles keyboard-accessible without JavaScript. */
+    .story-full {
+      margin-top: auto;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+    .story-card--creator .story-full { border-top-color: rgb(255 255 255 / 20%); }
+    .read-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--pine);
+      border-radius: 0.4rem;
+      color: #fffdf8;
+      background: var(--pine);
+      cursor: pointer;
+      font: 700 0.9rem/1.3 var(--body-font);
+      list-style: none;
+    }
+    .read-toggle::-webkit-details-marker { display: none; }
+    .read-toggle::after { content: "+"; font-size: 1.25rem; line-height: 1; }
+    .story-full[open] > .read-toggle::after { content: "−"; }
+    .story-card--creator .read-toggle {
+      border-color: #dbe5dd;
+      color: var(--pine);
+      background: #f0f1e9;
+    }
+
+    .full-article {
+      margin-top: 0.9rem;
+      padding: clamp(1rem, 2.4vw, 1.5rem);
+      border: 1px solid var(--line);
+      border-radius: 0.55rem;
+      color: var(--ink);
+      background: var(--card);
+      font-family: var(--display-font);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .full-article p { margin: 0.75rem 0; }
+    .full-article p:first-child { margin-top: 0; }
+    .full-article p:last-child { margin-bottom: 0; }
+    .full-article a { color: var(--pine-light); overflow-wrap: anywhere; }
+    /* Source notes stay inside the expanded profile so links remain attached to their story. */
+    .source-box {
+      margin-top: 1.35rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--line);
+      border-left: 0.25rem solid var(--rust);
+      border-radius: 0.45rem;
+      color: var(--ink);
+      background: #f3f0e7;
+      font-family: var(--body-font);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .source-box h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+    .source-box ul { margin: 0; padding-left: 1.25rem; }
+    .source-box li + li { margin-top: 0.35rem; }
+    .source-box a { color: #24594d; font-weight: 650; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 0.15em; }
+    .source-box .source-note { margin: 0.65rem 0 0; color: var(--muted); font-size: 0.87rem; }
+    .editor-update {
+      padding: 0.8rem 1rem;
+      border-left: 0.25rem solid var(--rust);
+      color: var(--ink);
+      background: #f3f0e7;
+      font-family: var(--body-font);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    .back-to-top {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: var(--body-font);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    /* Shared footer. */
+    .site-footer { color: #e6ece5; background: var(--pine); }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem 2rem;
+      padding-block: 1.1rem;
+      font-size: 0.86rem;
+    }
+    .footer-inner p { margin: 0; }
+
+    /* Tablet and phone layouts return the cards to a single readable column. */
+    @media (max-width: 54rem) {
+      .header-inner { align-items: flex-start; flex-direction: column; gap: 1.2rem; }
+      .site-nav ul { justify-content: flex-start; margin-left: -0.75rem; }
+      .story-card--mayor,
+      .story-card--creator { grid-column: 1 / -1; }
+    }
+    @media (max-width: 34rem) {
+      .header-inner,
+      .footer-inner,
+      .page-shell { width: min(calc(100% - 1.5rem), var(--content-width)); }
+      .site-nav a { padding: 0.45rem 0.55rem; font-size: 0.88rem; }
+      .story-card { border-radius: 0.55rem; }
+      .story-body { padding: 1.1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .story-card { transition: none; }
+      .story-card:hover,
+      .story-card:focus-within { transform: none; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header" role="banner">
-    <div class="logo" aria-hidden="false">
-      <h1>Feature Story</h1>
-      <p>Independent Creative Spotlight</p>
+  <!-- Keyboard users can skip directly to this page's unique content. -->
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Shared publication masthead; only the current navigation link changes by page. -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="Ark News home">
+        <span class="brand-name">Ark News</span>
+        <span class="brand-tagline">Independent Local Journalism</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="local.html">Local</a></li>
+          <li><a href="featuredpeople.html" aria-current="page">Featured People</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <!-- ============================
-     NAVIGATION BAR (SITE-WIDE)
-     Notes:
-     - Replace only the highlighted link per page.
-     - Keep structure identical for consistency.
-============================ -->
-<nav class="main-nav">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="local.html">Local</a></li>
-        <li><a href="featuredpeople.html">Featured People</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
-
-
-
+    <div class="header-rule" aria-hidden="true"></div>
   </header>
 
-  <main class="page" id="top" role="main">
-    <section class="intro" aria-labelledby="featured-heading">
-      <h2 id="featured-heading">Featured People</h2>
-      <p>Profiles, interviews, and community spotlights. Click a card's Read button to expand the story inline.</p>
+  <!-- People page: editorial introduction followed by two differently weighted profile cards. -->
+  <main class="page-shell" id="main-content">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">People &amp; community</p>
+      <h1 id="page-title">Featured People</h1>
+      <p>Profiles, interviews, and community spotlights.</p>
     </section>
 
-    <!-- Stories grid: only the two requested articles remain -->
-    <section class="stories" id="stories" aria-label="Featured stories list">
-      <!-- Story card 1: Mayor Joe Ayala -->
-      <article class="story-card" aria-labelledby="s1-title">
-        <div class="story-media" role="img" aria-label="Portrait of Mayor Joe Ayala">
-          <img src="https://dl.dropboxusercontent.com/scl/fi/229o4dphvv65c4wl91uki/MayorJoeAyala.jpg?rlkey=273aclig5mjpgw91f797gl3oi&raw=1"
-               alt="Mayor Joe Ayala smiling at a community event">
-        </div>
-
+    <section class="feature-grid" aria-label="Featured profiles">
+      <!-- Lead profile: larger light card for the community leadership story. -->
+      <article class="story-card story-card--mayor" aria-labelledby="mayor-title">
+        <figure class="story-media">
+          <img
+            src="https://dl.dropboxusercontent.com/scl/fi/229o4dphvv65c4wl91uki/MayorJoeAyala.jpg?rlkey=273aclig5mjpgw91f797gl3oi&raw=1"
+            alt="Mayor Joe Ayala smiling at a community event"
+            loading="lazy">
+          <figcaption>Photo credit: Joe Ayala</figcaption>
+        </figure>
         <div class="story-body">
-          <h4 id="s1-title" class="story-title">Mayor Joe Ayala: Community, Childhood, and the Road Ahead</h4>
-          <div class="story-meta"><span>La Junta, CO</span><span>·</span><time datetime="2026-08-01">Aug 1, 2026</time></div>
+          <p class="story-type">Community leadership</p>
+          <h2 class="story-title" id="mayor-title">Mayor Joe Ayala: Community, Childhood, and the Road Ahead</h2>
+          <p class="story-meta"><span>La Junta, CO</span><span aria-hidden="true">·</span><time datetime="2026-08-01">Aug. 1, 2026</time></p>
           <p class="story-excerpt">Ayala discusses local journalism, youth programs, and the role of municipal leadership in small towns.</p>
 
-          <!-- Inline expandable article using details/summary -->
-          <details class="story-full" aria-labelledby="s1-title">
-            <summary class="btn" aria-controls="ayala-full">Read</summary>
-            <div id="ayala-full" class="full-article">
-              <img src="https://dl.dropboxusercontent.com/scl/fi/229o4dphvv65c4wl91uki/MayorJoeAyala.jpg?rlkey=273aclig5mjpgw91f797gl3oi&raw=1"
-                   alt="Mayor Joe Ayala Feature Photo"
-                   class="feature-image">
-              <p><strong>Photo Credit: Joe Ayala</strong></p>
-
+          <!-- Update the profile text inside this disclosure; the summary remains its visible control. -->
+          <details class="story-full">
+            <summary class="read-toggle">Read the full profile</summary>
+            <div class="full-article">
               <p><strong>La Junta, Colorado</strong> — Mayor Joe Ayala, a lifelong resident of the Arkansas Valley, offered a candid look at his upbringing, motivations, and hopes for the community in a recent interview that underscored both the strengths and challenges of small-town life.</p>
 
               <p>Ayala grew up in La Junta during the 1990s, a period he remembers for simplicity, familial bond, and early exposure to technology. He recalled classrooms with computers running games like <em>Oregon Trail</em> and <em>Number Munchers</em>, alongside afternoons spent playing baseball, football, and other recreational sports. Though an only child, Ayala said his vast extended family made his childhood feel full and connected.</p>
@@ -253,7 +439,7 @@
 
               <p>"The biggest reason I wanted to become mayor was for my kids," he says, "for all the kids," noting that he wanted future generations to have the option to return home.</p>
 
-              <p>Ayala also discussed how travel teams, while beneficial for some families, reduce participation in local recreation leagues. He said this shift affects access for children who cannot afford travel-team costs and strains community programs that rely on broad participation.</p>
+              <p>Ayala also discussed how travel teams, while beneficial for some families, reduce participation in <a href="https://www.lajuntacolorado.org/200/Parks-Recreation" target="_blank" rel="noopener noreferrer">local recreation programs</a>. He said this shift affects access for children who cannot afford travel-team costs and strains community programs that rely on broad participation.</p>
 
               <p>Beyond athletics, Ayala expressed concern about declining engagement in arts and academic activities. He commented on the recent recast in production at the local children's theater due to low turnout and said many school achievements outside sports receive limited recognition. He recalled earlier eras when newspapers regularly highlighted student artwork, music programs, and community accomplishments.</p>
 
@@ -261,48 +447,55 @@
 
               <p>Ayala said local journalism plays a crucial role in restoring balance by emphasizing achievements beyond athletics. He voiced concern that the rise of AI-generated content has shifted focus toward sensationalism rather than community-centered reporting, observing that meaningful coverage requires presence, context, and connection.</p>
 
-              <p>He described the realities of municipal governance, noting that the mayor is one vote among seven council members and does not act unilaterally. Public perception often overestimates the mayor's authority, but the role is primarily one of leadership, communication, and support for the city manager.</p>
+              <p>He described the realities of municipal governance, noting that the mayor is one vote among seven council members and does not act unilaterally. The City of La Junta's <a href="https://www.lajuntacolorado.org/226/City-Council" target="_blank" rel="noopener noreferrer">council page</a> outlines the council's policy and budget responsibilities.</p>
 
-              <p>Ayala highlighted expanded public access to city meetings, all of which are now streamed for residents, including council, utility board, tourism, library, and urban renewal sessions.</p>
+              <p>Ayala highlighted expanded public access to city meetings, including council, utility board, tourism, library, and urban renewal sessions. A <a href="https://www.lajuntacolorado.org/wp-content/uploads/2025/07/7a.Council-Packet-July-7-2025.pdf" target="_blank" rel="noopener noreferrer">City Council packet</a> provides a public-record example of the city's meeting information.</p>
 
-              <p>When offering guidance for local youth, Ayala encouraged them to pursue meaningful goals, remain solution‑oriented, and use technology constructively. He said social media often presents only highlight reels, making it important for young people to stay grounded and surround themselves with positive influences.</p>
+              <p>When offering guidance for local youth, Ayala encouraged them to pursue meaningful goals, remain solution-oriented, and use technology constructively. He said social media often presents only highlight reels, making it important for young people to stay grounded and surround themselves with positive influences.</p>
 
               <p>"Find something that sets your soul on fire," he said.</p>
 
               <p>Ayala also urged young people to prepare themselves for future challenges by building skills and habits early. He compared personal growth to constructing an ark before the storm arrives, emphasizing the importance of long-term preparation.</p>
 
               <p>He closed the interview by expressing his appreciation for the conversation and reaffirming his commitment to supporting La Junta's continued growth and stability.</p>
-
-              <p><a class="btn" href="#top">Back to top</a></p>
+              <aside class="source-box" aria-labelledby="ayala-sources-title">
+                <h3 id="ayala-sources-title">Sources and interview note</h3>
+                <ul>
+                  <li><a href="https://www.lajuntacolorado.org/226/City-Council" target="_blank" rel="noopener noreferrer">City of La Junta: City Council</a> — current council roster, responsibilities and public participation information.</li>
+                  <li><a href="https://www.lajuntacolorado.org/200/Parks-Recreation" target="_blank" rel="noopener noreferrer">City of La Junta: Parks &amp; Recreation</a> — city recreation programs and facilities.</li>
+                  <li><a href="https://www.lajuntacolorado.org/wp-content/uploads/2025/07/7a.Council-Packet-July-7-2025.pdf" target="_blank" rel="noopener noreferrer">City Council packet, July 7, 2025</a> — official meeting materials.</li>
+                </ul>
+                <p class="source-note">Ayala's personal history and quotations are attributed to him in the Ark News interview. City links provide background on municipal roles and programs.</p>
+              </aside>
+              <p><a class="back-to-top" href="#top">Back to top</a></p>
             </div>
           </details>
         </div>
       </article>
 
-      <!-- Story card 2: Gregory Montoya -->
-      <article class="story-card" aria-labelledby="s3-title">
-        <div class="story-media" role="img" aria-label="Portrait of Gregory Montoya">
-          <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey&raw=1"
-               alt="Gregory Montoya working on a game design">
-        </div>
-
+      <!-- Second profile: darker card treatment highlights the creative-work story. -->
+      <article class="story-card story-card--creator" aria-labelledby="creator-title">
+        <figure class="story-media">
+          <img
+            src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey&raw=1"
+            alt="Gregory Montoya working on a game design"
+            loading="lazy">
+          <figcaption>Photo credit: Gregory Montoya</figcaption>
+        </figure>
         <div class="story-body">
-          <h4 id="s3-title" class="story-title">La Junta Native Set to Release Psychological Horror Video Game</h4>
-          <div class="story-meta"><span>La Junta, CO</span><span>·</span><time datetime="2026-07-01">Jul 1, 2026</time></div>
-          <p class="story-excerpt">Gregory Montoya, a self-taught developer, prepares to release the first chapter of a psychological horror game inspired by folklore and classic survival horror.</p>
+          <p class="story-type">Creative work</p>
+          <h2 class="story-title" id="creator-title">La Junta Developer Releases Psychological Horror Video Game</h2>
+          <p class="story-meta"><span>La Junta, CO</span><span aria-hidden="true">·</span><time datetime="2026-07-01">Jul. 1, 2026</time></p>
+          <p class="story-excerpt">Gregory Montoya, a self-taught developer, described the game ahead of its launch. Steam lists <em>Beguiled Egress</em> as released Aug. 21, 2026.</p>
 
-          <details class="story-full" aria-labelledby="s3-title">
-            <summary class="btn" aria-controls="montoya-full">Read</summary>
-            <div id="montoya-full" class="full-article">
-              <img src="https://dl.dropboxusercontent.com/scl/fi/1rytew88qvb91gkxtur59/GregoryMontoyaFeaturePic.jpg?rlkey=y657uxal2i9cnfha0upshtyey&raw=1"
-                   alt="Gregory Montoya Feature Photo"
-                   class="feature-image">
+          <details class="story-full">
+            <summary class="read-toggle">Read the full profile</summary>
+            <div class="full-article">
+              <p><strong>La Junta, Colorado</strong> — In an interview published July 1, 2026, Gregory Montoya, a game developer originally from the area, was preparing to release the first chapter of his psychological horror video game.</p>
 
-              <p><strong>Photo Credit: Gregory Montoya</strong></p>
+              <p class="editor-update"><strong>Editor’s update, Oct. 28, 2026:</strong> The July profile reported an early-December release target. <a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank" rel="noopener noreferrer">Steam lists <em>Beguiled Egress</em> as released Aug. 21, 2026.</a></p>
 
-              <p>LA JUNTA, Colorado — Gregory Montoya, a game developer originally from the area, is preparing to release the first chapter of his newest psychological horror video game, marking a major milestone in a journey shaped by resilience, creativity, and years of self-taught programming.</p>
-
-              <p>Montoya's childhood in La Junta was marked by instability. With a father battling alcoholism, he moved frequently and attended nine different schools before reaching adulthood. Those early challenges forced him to adapt quickly and pushed him toward creative outlets that offered structure and expression. Game development eventually became the place where imagination, discipline, and problem-solving converged.</p>
+              <p>Montoya said his childhood in La Junta was marked by instability. He said his father battled alcoholism, and he moved frequently and attended nine different schools before reaching adulthood. Montoya described game development as a creative outlet and a way to build interactive worlds.</p>
 
               <p>"Writing code felt like learning a new language," he said, "one the computer could understand."</p>
 
@@ -312,19 +505,24 @@
 
               <p>Data analysis has also become central to his work. He studies gameplay behavior to balance mechanics, pacing, and event timing, ensuring players experience tension and unpredictability.</p>
 
-              <p>Set for its first-chapter release in early December 2026, the game blends psychological horror with player choice, drawing inspiration from Silent Hill, Resident Evil, Fatal Frame, folklore, and urban legends.</p>
+              <p>At the time of the July 1 interview, Montoya said the first chapter was set for an early-December release. He described the game as psychological horror with player choice, drawing inspiration from <em>Silent Hill</em>, <em>Resident Evil</em>, <em>Fatal Frame</em>, folklore, and urban legends.</p>
 
               <p>"Make the game you've always wanted to play," Montoya said.</p>
 
               <p>A catastrophic setback nearly derailed the project when a hard drive failure erased the entire game. "Losing everything proved how much it meant to me," he said.</p>
 
-              <p>As the release approaches, Montoya continues to inspire through persistence, ingenuity, and a commitment to pushing creative boundaries.</p>
-
-              <p>The game is available on Steam at the link below:</p>
-
-              <p><a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank" rel="noopener">https://store.steampowered.com/app/4836860/Beguiled_Egress/</a></p>
-
-              <p><a class="btn" href="#top">Back to top</a></p>
+              <p>The game’s store page describes its genre, design and release details:</p>
+              <p><a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank" rel="noopener noreferrer">Beguiled Egress on Steam</a></p>
+              <aside class="source-box" aria-labelledby="montoya-sources-title">
+                <h3 id="montoya-sources-title">Sources and interview note</h3>
+                <ul>
+                  <li><a href="https://store.steampowered.com/app/4836860/Beguiled_Egress/" target="_blank" rel="noopener noreferrer">Steam store listing: Beguiled Egress</a> — developer, release date and publisher-provided game description.</li>
+                  <li><a href="https://store.steampowered.com/search/?developer=Gregory+Montoya" target="_blank" rel="noopener noreferrer">Steam developer listings: Gregory Montoya</a> — Steam titles associated with the developer name.</li>
+                  <li><a href="https://steamcommunity.com/app/4836860/" target="_blank" rel="noopener noreferrer">Steam Community Hub: Beguiled Egress</a> — community and discussion page for the game.</li>
+                </ul>
+                <p class="source-note">Montoya's personal history, influences and quotations are attributed to him in the Ark News interview. The three links above are Steam-hosted primary product and community records.</p>
+              </aside>
+              <p><a class="back-to-top" href="#top">Back to top</a></p>
             </div>
           </details>
         </div>
@@ -332,60 +530,13 @@
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <p>&copy; 2026 Ark News. All rights reserved.</p>
+  <!-- Shared footer. Update the copyright year during annual maintenance. -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 Ark News. All rights reserved.</p>
+      <p>Independent Local Journalism</p>
+    </div>
   </footer>
-
-  <script>
-    /**
-     * Navigation Return Handler
-     * 
-     * This script adds return functionality to the Home and Local navigation buttons.
-     * When clicked, it attempts to navigate back in browser history. If there's no
-     * history to return to, it falls back to the href destination.
-     * 
-     * Implementation follows progressive enhancement principles:
-     * - Links remain fully functional without JavaScript
-     * - Return behavior is added as an enhancement
-     * - Graceful fallback ensures accessibility
-     */
-    (function() {
-      'use strict';
-
-      /**
-       * Initialize return functionality for navigation elements
-       * @param {string} selector - CSS selector for target navigation links
-       * @param {string} fallbackUrl - Default URL if no return URL specified
-       */
-      function initNavigationReturn(selector, fallbackUrl) {
-        const navElement = document.querySelector(selector);
-        
-        if (!navElement) {
-          console.warn('Navigation element not found:', selector);
-          return;
-        }
-
-        navElement.addEventListener('click', function(event) {
-          // Check if there's history to go back to
-          if (window.history.length > 1) {
-            event.preventDefault();
-            window.history.back();
-          }
-          // If no history, allow default href behavior
-        });
-      }
-
-      // Initialize when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          initNavigationReturn('#nav-home', '/');
-          initNavigationReturn('#nav-local', '/local');
-        });
-      } else {
-        initNavigationReturn('#nav-home', '/');
-        initNavigationReturn('#nav-local', '/local');
-      }
-    })();
-  </script>
 </body>
 </html>
+
